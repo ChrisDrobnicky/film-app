@@ -10,14 +10,15 @@
   justify-content: space-between;
 }
 
-.appLogo {
+.appHeading {
   padding: 10px;
-  font-size: 1.8em;
+  font-size: 2em;
+  margin-bottom: 0;
 }
 
 .navList {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
   width: 40vw;
   margin-right: 4em;
