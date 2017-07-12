@@ -1,5 +1,5 @@
 {
-  "name": "film-app",
+  "name": "moviePicker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
