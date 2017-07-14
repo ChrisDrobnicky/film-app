@@ -9,6 +9,8 @@ import Header from '../Header/Header.component';
 import SearchMovies from '../SearchMovies/SearchMovies.component';
 import YourMovies from '../YourMovies/YourMovies.component';
 import About from '../About/About.component';
+import Footer from '../Footer/Footer.component';
+
 import styles from './App.stylesheet.css';
 
 class App extends Component {
@@ -20,6 +22,7 @@ class App extends Component {
           <Route exact path="/" component={SearchMovies}/>
           <Route path="/your-movies" component={YourMovies} />
           <Route path="/about" component={About} />
+          <Footer />
         </div>
       </Router>
     );
