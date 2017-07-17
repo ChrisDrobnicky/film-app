@@ -1,19 +1,13 @@
 import axios from 'axios';
-import Config from '../../config';
+import config from '../config';
 
-const apiKey = Config.apiKey;
-const apiURL = Config.apiURL;
+const apiKey = config.apiKey;
+const apiURL = config.apiURL;
 
 
 const getUpcomingMovies = () => {
-  const upcomingURL = `${apiURL}'upcoming?'${apiKey}`;
-  axios.get(upcomingURL)
-    .then(function (response) {
-     return response;
-    })
-    .catch(function (error) {
-     return error;
-    })
+  const upcomingURL = `${apiURL}/upcoming?api_key=${apiKey}`;
+  return axios.get(upcomingURL);
 };
 
 export default getUpcomingMovies;

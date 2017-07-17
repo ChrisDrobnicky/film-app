@@ -8,16 +8,12 @@ class SearchMovies extends Component {
     super();
 
     this.state = {
-      data: null
+      data: []
     }
   }
 
   componentDidMount() {
-    const newData = getUpcomingMovies()
-    this.setState( {
-      data: newData
-      }
-    )
+    getUpcomingMovies().then(res => this.setState( {data: res.data.results}));
   }
 
   render () {
@@ -29,7 +25,6 @@ class SearchMovies extends Component {
       </div>
     )
   }
-
 }
 
 export default SearchMovies;
