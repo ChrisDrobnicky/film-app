@@ -1,27 +1,49 @@
 import React, {Component} from 'react';
 
 import styles from './SearchMovies.stylesheet.css';
-import getUpcomingMovies from '../../services/services';
+import {get2017Movies} from '../../services/services';
+import config from '../../config';
 
 class SearchMovies extends Component {
   constructor() {
     super();
 
     this.state = {
-      data: []
+      movies: []
     }
   }
 
   componentDidMount() {
-    getUpcomingMovies().then(res => this.setState( {data: res.data.results}));
+    get2017Movies().then(res => this.setState( {movies: res.data.results}));
   }
 
   render () {
+    const imageBaseURL = config.imageBaseURL;
     return(
       <div className={styles.Wrapper}>
-        {this.state.data.map ( (item, index) => {
-          return <div key={index}>{item.title}</div>
-        })}
+        <table className={`ui selectable celled table ${styles.table}`}>
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Release Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          {this.state.movies.map ( (movie) => {
+            return <tr key={movie.id}>
+              <td>
+                <span> {movie.title} </span>
+                <span>
+                  <img src={`${imageBaseURL}${movie.poster_path}`}/>
+                </span>
+              </td>
+              <td> {movie.vote_average}</td>
+              <td> {movie.release_date}</td>
+            </tr>
+          })}
+          </tbody>
+        </table>
       </div>
     )
   }

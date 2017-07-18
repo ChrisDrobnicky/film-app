@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className={styles.App}>
           <Header />
           <Route exact path="/" component={SearchMovies}/>
           <Route path="/your-movies" component={YourMovies} />
