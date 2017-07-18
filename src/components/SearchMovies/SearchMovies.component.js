@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 import styles from './SearchMovies.stylesheet.css';
 import {get2017Movies} from '../../services/services';
-import config from '../../config';
+
+import MovieRow from '../MovieRow/MovieRow.component'
 
 class SearchMovies extends Component {
   constructor() {
@@ -18,30 +19,33 @@ class SearchMovies extends Component {
   }
 
   render () {
-    const imageBaseURL = config.imageBaseURL;
+
     return(
       <div className={styles.Wrapper}>
         <table className={`ui selectable celled table ${styles.table}`}>
           <thead>
-          <tr>
-            <th>Title</th>
-            <th>Rating</th>
-            <th>Release Date</th>
-          </tr>
+            <tr>
+              <th>Title</th>
+              <th>Popularity</th>
+              <th>Number of Votes</th>
+              <th>Rating</th>
+              <th>Overview</th>
+              <th>Release Date</th>
+            </tr>
           </thead>
           <tbody>
-          {this.state.movies.map ( (movie) => {
-            return <tr key={movie.id}>
-              <td>
-                <span> {movie.title} </span>
-                <span>
-                  <img src={`${imageBaseURL}${movie.poster_path}`}/>
-                </span>
-              </td>
-              <td> {movie.vote_average}</td>
-              <td> {movie.release_date}</td>
-            </tr>
-          })}
+          {this.state.movies.map(movie =>
+            <MovieRow
+              id={movie.id}
+              title={movie.title}
+              poster_path={movie.poster_path}
+              popularity={movie.popularity}
+              vote_count={movie.vote_count}
+              vote_average={movie.vote_average}
+              overview={movie.overview}
+              release_date={movie.release_date}
+            />
+          )}
           </tbody>
         </table>
       </div>
