@@ -42,7 +42,7 @@ class SearchMovies extends Component {
               <tbody>
               {this.state.movies.map(movie =>
                 <MovieRow
-                  id={movie.id}
+                  id={movie.id} key={movie.id}
                   title={movie.title}
                   poster_path={movie.poster_path}
                   popularity={movie.popularity}
