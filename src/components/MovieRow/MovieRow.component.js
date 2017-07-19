@@ -31,6 +31,13 @@ class MovieRow extends Component {
 
   render() {
     const imageBaseURL = config.imageBaseURL;
+    const genreToDisplay = this.state.genres.map((genre, index) => {
+      return index === this.state.genres.length - 1 ? genre : `${genre}, `;
+    });
+    const castToDisplay = this.state.cast.map((actor, index) => {
+      return index > 4 ? null : `${actor}, `;
+      });
+
     return (
       <tr key={this.props.id}>
         <td>
@@ -39,13 +46,25 @@ class MovieRow extends Component {
             <img src={`${imageBaseURL}${this.props.poster_path}`}/>
           </span>
         </td>
-        <td>{this.state.genres}</td>
-        <td>{this.state.cast}</td>
-        <td>{this.props.popularity}</td>
-        <td>{this.props.vote_count}</td>
+        <td>
+          <span>
+            {genreToDisplay}
+          </span>
+        </td>
+        <td>
+          <span>
+            {castToDisplay}
+          </span>
+        </td>
         <td>{this.props.vote_average}</td>
-        <td>{this.props.overview}</td>
+        <td>{this.props.vote_count}</td>
         <td>{this.props.release_date}</td>
+        <td>
+          <button className="ui teal button">Show details</button>
+        </td>
+        <td>
+          <button className="ui green small button">Add to Your Movies</button>
+        </td>
       </tr>
     )
   }

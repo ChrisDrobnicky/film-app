@@ -28,16 +28,16 @@ class SearchMovies extends Component {
             <span>Loading...</span> :
             <table className={`ui selectable celled table ${styles.table}`}>
               <thead>
-              <tr>
-                <th>Title</th>
-                <th>Genres</th>
-                <th>Cast</th>
-                <th>Popularity</th>
-                <th>Number of Votes</th>
-                <th>Rating</th>
-                <th>Overview</th>
-                <th>Release Date</th>
-              </tr>
+                <tr>
+                  <th>Title</th>
+                  <th>Genres</th>
+                  <th>Cast</th>
+                  <th>Rating</th>
+                  <th>Number of Votes</th>
+                  <th>Release Date</th>
+                  <th>Details</th>
+                  <th>Added to Your Movies</th>
+                </tr>
               </thead>
               <tbody>
               {this.state.movies.map(movie =>
@@ -45,10 +45,8 @@ class SearchMovies extends Component {
                   id={movie.id} key={movie.id}
                   title={movie.title}
                   poster_path={movie.poster_path}
-                  popularity={movie.popularity}
                   vote_count={movie.vote_count}
                   vote_average={movie.vote_average}
-                  overview={movie.overview}
                   release_date={movie.release_date}
                 />
               )}
