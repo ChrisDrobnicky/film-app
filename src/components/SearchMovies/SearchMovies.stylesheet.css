@@ -1,4 +1,10 @@
-.table {
-  margin: 20px; }
+.Wrapper {
+  margin: 20px auto;
+  width: 80vw;
+  font-size: 1em; }
 
-/*# sourceMappingURL=MovieRow.stylesheet.css */
+.tableHead {
+  font-size: 1.2em;
+  text-align: center; }
+
+/*# sourceMappingURL=SearchMovies.stylesheet.css.map */

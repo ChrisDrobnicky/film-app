@@ -26,17 +26,17 @@ class SearchMovies extends Component {
         {
           this.state.isComponentLoading ?
             <span>Loading...</span> :
-            <table className={`ui selectable celled table ${styles.table}`}>
-              <thead>
+            <table className={`ui compact celled definition table`}>
+              <thead className={styles.tableHead}>
                 <tr>
+                  <th>Add </th>
                   <th>Title</th>
                   <th>Genres</th>
                   <th>Cast</th>
                   <th>Rating</th>
-                  <th>Number of Votes</th>
-                  <th>Release Date</th>
+                  <th>Votes</th>
+                  <th>Release Year</th>
                   <th>Details</th>
-                  <th>Added to Your Movies</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,6 +51,22 @@ class SearchMovies extends Component {
                 />
               )}
               </tbody>
+              <tfoot className="full-width">
+                <tr>
+                  <th></th>
+                  <th colSpan="7">
+                    <div className="ui right floated small primary labeled icon button">
+                      <i className="star icon"></i> Add to My Movies
+                    </div>
+                    <div className="ui small button">
+                      Add
+                    </div>
+                    <div className="ui small  disabled button">
+                      Add All
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
             </table>
         }
       </div>
