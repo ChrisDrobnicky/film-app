@@ -7,8 +7,10 @@ const Header = () => (
   <header className={styles.Header}>
     <nav className={styles.navWrapper}>
       <h1 className={styles.appHeading}>
-        Movie Picker
-        <i className="film big icon"> </i>
+        <Link to="/" replace className={styles.navLink}>
+          Movie Picker
+          <i className="film big icon"> </i>
+        </Link>
       </h1>
       <ul className={styles.navList}>
         <li className={styles.navListItem}>
