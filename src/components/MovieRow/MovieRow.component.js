@@ -20,7 +20,11 @@ class MovieRow extends Component {
           return genre.name;
         });
         const cast = res2.data.cast.map(actor => {
-          return actor.name;
+          return {
+            name: actor.name,
+            character: actor.character,
+            id: actor.id
+          }
         });
         this.setState({
           genres,
@@ -35,7 +39,9 @@ class MovieRow extends Component {
       return index === this.state.genres.length - 1 ? genre : `${genre}, `;
     });
     const castToDisplay = this.state.cast.map((actor, index) => {
-      return index > 4 ? null : `${actor} `;
+      return index > 4
+        ? null
+        : <li className={styles.movieCastItem} key={actor.id}> {`${actor.name} (as ${actor.character})`} </li>;
       });
     const releaseDate = this.props.release_date;
     const releaseYear = (new Date(releaseDate)).getFullYear();
@@ -59,9 +65,7 @@ class MovieRow extends Component {
           </span>
         </td>
         <td className={styles.movieCast}>
-          <span>
-            {castToDisplay}
-          </span>
+          <ul className={styles.movieCastList}>{castToDisplay}</ul>
         </td>
         <td className={styles.movieRating}>{this.props.vote_average}</td>
         <td className={styles.movieVotes}>{this.props.vote_count}</td>
