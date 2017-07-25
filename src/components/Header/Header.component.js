@@ -6,12 +6,12 @@ import styles from './Header.stylesheet.css';
 const Header = () => (
   <header className={styles.Header}>
     <nav className={styles.navWrapper}>
-      <h1 className={styles.appHeading}>
+      <h3 className={styles.appHeading}>
         <Link to="/" replace className={styles.navLink}>
-          Movie Picker
-          <i className="film big icon"> </i>
+          <span className={styles.navLinkName}>Movie Picker</span>
+          <i className="film icon"> </i>
         </Link>
-      </h1>
+      </h3>
       <ul className={styles.navList}>
         <li className={styles.navListItem}>
           <Link to="/" replace className={styles.navLink}>Search Movies</Link>

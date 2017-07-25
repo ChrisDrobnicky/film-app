@@ -71,7 +71,7 @@ class MovieRow extends Component {
         <td className={styles.movieVotes}>{this.props.vote_count}</td>
         <td className={styles.movieDate}>{releaseYear}</td>
         <td className={styles.movieDetails}>
-          <button className="circular ui teal button">Show details</button>
+          <button className="ui small teal button">Show details</button>
         </td>
       </tr>
     )
