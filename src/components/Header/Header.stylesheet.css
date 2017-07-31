@@ -1,26 +1,29 @@
 .Header {
   box-shadow: 0 -2px 9px 1px #9e9e9e;
-  min-width: 100%; }
+  min-width: 100%;
+  font-size: 1.285714rem; }
 
 .navWrapper {
   display: flex;
   align-items: center;
+  padding-left: 2em;
+  padding-right: 2em;
   justify-content: space-between; }
 
 .appHeading {
   padding: 10px;
-  font-size: 2em;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  font-size: 1.285714rem; }
 
 .navList {
   display: flex;
-  justify-content: space-around;
+  padding-right: 10px;
+  justify-content: space-between;
   list-style-type: none;
-  width: 40vw;
-  margin-right: 4em; }
+  width: 30vw; }
 
-.navListItem {
-  font-size: 1.5em; }
+.navLinkName {
+  padding-right: 10px; }
 
 .navLink {
   text-decoration: none;
@@ -29,4 +32,4 @@
   .navLink:hover {
     color: darkblue; }
 
-/*# sourceMappingURL=Footer.stylesheet.css.map */
+/*# sourceMappingURL=Header.stylesheet.css.map */
