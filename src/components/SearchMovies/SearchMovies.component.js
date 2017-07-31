@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import styles from './SearchMovies.stylesheet.css';
-import {get2017Movies} from '../../services/services';
+import {getThisYearMovies} from '../../services/services';
 import MovieRow from '../MovieRow/MovieRow.component'
 
 class SearchMovies extends Component {
@@ -14,7 +14,8 @@ class SearchMovies extends Component {
   }
 
   componentDidMount() {
-    get2017Movies().then(res => this.setState({
+    let currentYear = new Date().getFullYear();
+    getThisYearMovies(currentYear).then(res => this.setState({
       movies: res.data.results,
       isComponentLoading: false
     }));
