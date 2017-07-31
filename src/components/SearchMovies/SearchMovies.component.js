@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 import styles from './SearchMovies.stylesheet.css';
 import {getThisYearMovies} from '../../services/services';
-import MovieRow from '../MovieRow/MovieRow.component'
+import MovieRow from '../MovieRow/MovieRow.component';
+import FilterMovies from '../FilterMovies/FilterMovies.component';
 
 class SearchMovies extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class SearchMovies extends Component {
   render() {
     return(
       <div className={styles.Wrapper}>
+        <FilterMovies />
         {
           this.state.isComponentLoading ?
             <span>Loading...</span> :
