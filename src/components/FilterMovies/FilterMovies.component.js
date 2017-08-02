@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 
 import styles from './FilterMovies.stylesheet.css';
 
+const years = [];
+for (let i = 1900; i <= (new Date().getFullYear()); i++) {
+  years.push(i);
+}
+const option = years.map(year =>
+  <option value={year} key={year}>{year}</option>
+);
+
 class FilterMovies extends Component {
   constructor() {
     super();
@@ -14,7 +22,7 @@ class FilterMovies extends Component {
         apiName: 'primary_release_date.lte',
         value: new Date().getFullYear()
       }
-    }
+    };
 
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -44,11 +52,7 @@ class FilterMovies extends Component {
             value={this.state.releaseYearFrom.value}
             onChange={this.handleSelectChange}
           >
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
+            {option}
           </select>
           <label htmlFor="releaseYearTo">Year to:</label>
           <select
@@ -58,12 +62,9 @@ class FilterMovies extends Component {
             value={this.state.releaseYearTo.value}
             onChange={this.handleSelectChange}
           >
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
+            {option}
           </select>
+          <button className="positive ui tiny button">Search</button>
         </fieldset>
       </div>
     )
