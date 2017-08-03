@@ -13,6 +13,8 @@ const option = years.map(year =>
 class FilterMovies extends Component {
   constructor() {
     super();
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
     this.state = {
       releaseYearFrom: {
         apiName: 'primary_release_date.gte',
@@ -23,22 +25,21 @@ class FilterMovies extends Component {
         value: new Date().getFullYear()
       }
     };
-
-
-    this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   handleSelectChange(event) {
     const targetSelect = event.target.name;
+    const objToSave = {
+      apiName: this.state[targetSelect].apiName,
+      value: Number(event.target.value)
+    };
     this.setState({
-      [targetSelect]:{value: event.target.value}
+      [targetSelect]: objToSave
     });
   }
 
-  handleSearchClick(filterState) {
-    debugger;
-    this.props.updateMovies(filterState);
+  handleSearchClick() {
+    this.props.updateMovies(this.state);
   }
 
   render() {
@@ -68,7 +69,7 @@ class FilterMovies extends Component {
           </select>
           <button
             className="positive ui tiny button"
-            onClick={ () => this.handleSearchClick({filterState: this.state})}
+            onClick={this.handleSearchClick}
           >
             Search
           </button>

@@ -9,6 +9,7 @@ import FilterMovies from '../FilterMovies/FilterMovies.component';
 class SearchMovies extends Component {
   constructor() {
     super();
+    this.updateMovies = this.updateMovies.bind(this);
     this.state = {
       movies: [],
       isComponentLoading: true
@@ -24,9 +25,12 @@ class SearchMovies extends Component {
   }
 
 
-  updateMovies(...args) {
-    debugger;
-    const [yearFrom, yearTo] = args;
+  updateMovies(filters) {
+    this.setState({ isComponentLoading: true });
+    filterMovies(filters).then(res => this.setState({
+      movies: res.data.results,
+      isComponentLoading: false
+    }))
   }
 
   render() {
