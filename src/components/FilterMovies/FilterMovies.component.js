@@ -24,20 +24,22 @@ class FilterMovies extends Component {
       }
     };
 
+
     this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   handleSelectChange(event) {
-    debugger;
     const targetSelect = event.target.name;
-    debugger;
     this.setState({
       [targetSelect]:{value: event.target.value}
     });
-
   }
 
+  handleSearchClick(filterState) {
+    debugger;
+    this.props.updateMovies(filterState);
+  }
 
   render() {
     return(
@@ -64,7 +66,12 @@ class FilterMovies extends Component {
           >
             {option}
           </select>
-          <button className="positive ui tiny button">Search</button>
+          <button
+            className="positive ui tiny button"
+            onClick={ () => this.handleSearchClick({filterState: this.state})}
+          >
+            Search
+          </button>
         </fieldset>
       </div>
     )

@@ -15,6 +15,11 @@ export const getThisYearMovies = (year) => {
   return axios.get(moviesURL);
 };
 
+export const filterMovies = (...filters) => {
+  const moviesURL = `${apiURL}/discover/movie?api_key=${apiKey}&primary_release_year=${filters}&${filters}`;
+  return axios.get(moviesURL);
+};
+
 export const getMovieDetails = (id) => axios.get(`${apiURL}/movie/${id}?api_key=${apiKey}&language=en-US`);
 
 export const getMovieCast = (id) => axios.get(`${apiURL}/movie/${id}/credits?api_key=${apiKey}`);
