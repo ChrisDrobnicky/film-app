@@ -20,7 +20,8 @@ export const filterMovies = (filters) => {
   for (let filter in filters) {
     if (filters.hasOwnProperty(filter) && filters[filter].value && filters[filter].value !== 'Any') {
       if (Array.isArray(filters[filter].value)) {
-        filters[filter].value.forEach(elem => basicURL.concat(`&${filters[filter].apiName}=${elem}`));
+        filters[filter].value.forEach(
+          (elem, index) => basicURL = basicURL.concat(`&${filters[filter].apiName[index]}=${elem}`));
       } else {
         basicURL = basicURL.concat(`&${filters[filter].apiName}=${filters[filter].value}`)
       }
