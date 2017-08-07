@@ -2,19 +2,18 @@ import React, {Component} from 'react';
 
 import styles from './FilterMovies.stylesheet.css';
 
-const years = [];
-for (let i = 1900; i <= (new Date().getFullYear()); i++) {
-  years.push(i);
-}
-const option = years.map(year =>
-  <option value={year} key={year}>{year}</option>
-);
+const votes = ['Any', '0-1000', '1000-5000', '5000-10000', '10000-'];
+
+const votesOptions = votes.map(vote => {
+  return <option value={vote.split('-')} key={vote}>{vote}</option>
+});
 
 class FilterMovies extends Component {
   constructor() {
     super();
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.generateYearOptions = this.generateYearOptions.bind(this);
     this.state = {
       releaseYearFrom: {
         apiName: 'primary_release_date.gte',
@@ -23,7 +22,11 @@ class FilterMovies extends Component {
       releaseYearTo: {
         apiName: 'primary_release_date.lte',
         value: new Date().getFullYear()
-      }
+      },
+      votes: {
+        apiName: ['vote_count.gte', 'vote_count.lte'],
+        value: 'Any'
+      },
     };
   }
 
@@ -31,7 +34,7 @@ class FilterMovies extends Component {
     const targetSelect = event.target.name;
     const objToSave = {
       apiName: this.state[targetSelect].apiName,
-      value: Number(event.target.value)
+      value: (targetSelect !== 'votes' ? Number(event.target.value) : event.target.value)
     };
     this.setState({
       [targetSelect]: objToSave
@@ -42,31 +45,58 @@ class FilterMovies extends Component {
     this.props.updateMovies(this.state);
   }
 
+  generateYearOptions(yearFrom, yearTo) {
+    const years = [];
+    for (let i = yearFrom; i <= yearTo; i++) {
+      years.push(i);
+    }
+    const yearOptions = years.map(year =>
+    <option value={year} key={year}>{year}</option>
+    );
+    return yearOptions.reverse();
+  }
+
   render() {
     return(
       <div className={styles.Wrapper}>
         <fieldset>
           <legend className={styles.filterHeader}>Set filters:</legend>
-          <label htmlFor="releaseYearFrom">Year from:</label>
-          <select
-            className=""
-            id="releaseYearFrom"
-            name="releaseYearFrom"
-            value={this.state.releaseYearFrom.value}
-            onChange={this.handleSelectChange}
-          >
-            {option}
-          </select>
-          <label htmlFor="releaseYearTo">Year to:</label>
-          <select
-            className=""
-            id="releaseYearTo"
-            name="releaseYearTo"
-            value={this.state.releaseYearTo.value}
-            onChange={this.handleSelectChange}
-          >
-            {option}
-          </select>
+          <fieldset>
+            <legend>Release date</legend>
+            <label htmlFor="releaseYearFrom">Year from:</label>
+            <select
+              className=""
+              id="releaseYearFrom"
+              name="releaseYearFrom"
+              value={this.state.releaseYearFrom.value}
+              onChange={this.handleSelectChange}
+            >
+              {this.generateYearOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
+            </select>
+            <label htmlFor="releaseYearTo">Year to:</label>
+            <select
+              className=""
+              id="releaseYearTo"
+              name="releaseYearTo"
+              value={this.state.releaseYearTo.value}
+              onChange={this.handleSelectChange}
+            >
+              {this.generateYearOptions(this.state.releaseYearFrom.value || 1950, new Date().getFullYear())}
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Votes</legend>
+            <label htmlFor="votesMin">Range:</label>
+            <select
+              className=""
+              id="votes"
+              name="votes"
+              value={this.state.votes.value}
+              onChange={this.handleSelectChange}
+            >
+              {votesOptions}
+            </select>
+          </fieldset>
           <button
             className="positive ui tiny button"
             onClick={this.handleSearchClick}

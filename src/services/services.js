@@ -18,12 +18,11 @@ export const getThisYearMovies = (year) => {
 export const filterMovies = (filters) => {
   let basicURL = `${apiURL}/discover/movie?api_key=${apiKey}`;
   for (let filter in filters) {
-    if (filters.hasOwnProperty(filter) && filters[filter].value) {
+    if (filters.hasOwnProperty(filter) && filters[filter].value && filters[filter].value !== 'Any') {
       basicURL = basicURL.concat(`&${filters[filter].apiName}=${filters[filter].value}`)
     }
   }
   return axios.get(basicURL);
-  debugger;
 };
 
 export const getMovieDetails = (id) => axios.get(`${apiURL}/movie/${id}?api_key=${apiKey}&language=en-US`);
