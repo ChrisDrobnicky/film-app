@@ -12,7 +12,7 @@ class FilterMovies extends Component {
     super();
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.generateYearOptions = this.generateYearOptions.bind(this);
+    this.generateNumericalOptions = this.generateNumericalOptions.bind(this);
     this.state = {
       releaseYearFrom: {
         apiName: 'primary_release_date.gte',
@@ -26,6 +26,14 @@ class FilterMovies extends Component {
         apiName: ['vote_count.gte', 'vote_count.lte'],
         value: 'Any'
       },
+      ratingMin: {
+        apiName: 'vote_average.gte',
+        value: 0
+      },
+      ratingMax: {
+        apiName: 'vote_average.lte',
+        value: 10
+      }
     };
   }
 
@@ -44,15 +52,15 @@ class FilterMovies extends Component {
     this.props.updateMovies(this.state);
   }
 
-  generateYearOptions(yearFrom, yearTo) {
-    const years = [];
-    for (let i = yearFrom; i <= yearTo; i++) {
-      years.push(i);
+  generateNumericalOptions(min, max) {
+    const numbers = [];
+    for (let i = min; i <= max; i++) {
+      numbers.push(i);
     }
-    const yearOptions = years.map(year =>
-    <option value={year} key={year}>{year}</option>
+    const numericalOptions = numbers.map(number =>
+    <option value={number} key={number}>{number}</option>
     );
-    return yearOptions.reverse();
+    return numericalOptions.reverse();
   }
 
   render() {
@@ -70,7 +78,7 @@ class FilterMovies extends Component {
               value={this.state.releaseYearFrom.value}
               onChange={this.handleSelectChange}
             >
-              {this.generateYearOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
+              {this.generateNumericalOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
             </select>
             <label htmlFor="releaseYearTo">Year to:</label>
             <select
@@ -80,7 +88,7 @@ class FilterMovies extends Component {
               value={this.state.releaseYearTo.value}
               onChange={this.handleSelectChange}
             >
-              {this.generateYearOptions(this.state.releaseYearFrom.value || 1950, new Date().getFullYear())}
+              {this.generateNumericalOptions(this.state.releaseYearFrom.value || 1950, new Date().getFullYear())}
             </select>
           </fieldset>
           <fieldset>
@@ -94,6 +102,29 @@ class FilterMovies extends Component {
               onChange={event => this.handleSelectChange(event, true)}
             >
               {votesOptions}
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Rating:</legend>
+            <label htmlFor="ratingMin">Min:</label>
+            <select
+              className=""
+              id="ratingMin"
+              name="ratingMin"
+              value={this.state.ratingMin.value}
+              onChange={this.handleSelectChange}
+            >
+              {this.generateNumericalOptions(0, this.state.ratingMax.value || 10)}
+            </select>
+            <label htmlFor="ratingMax">Max:</label>
+            <select
+              className=""
+              id="ratingMax"
+              name="ratingMax"
+              value={this.state.ratingMax.value}
+              onChange={this.handleSelectChange}
+            >
+              {this.generateNumericalOptions(this.state.ratingMin.value || 0, 10)}
             </select>
           </fieldset>
           <button
