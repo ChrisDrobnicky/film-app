@@ -3,9 +3,8 @@ import React, {Component} from 'react';
 import styles from './FilterMovies.stylesheet.css';
 
 const votes = ['Any', '0-1000', '1000-5000', '5000-10000', '10000-'];
-
 const votesOptions = votes.map(vote => {
-  return <option value={vote.split('-')} key={vote}>{vote}</option>
+  return <option value={vote} key={vote}>{vote}</option>
 });
 
 class FilterMovies extends Component {
@@ -30,11 +29,11 @@ class FilterMovies extends Component {
     };
   }
 
-  handleSelectChange(event) {
+  handleSelectChange(event, isRange) {
     const targetSelect = event.target.name;
     const objToSave = {
       apiName: this.state[targetSelect].apiName,
-      value: (targetSelect !== 'votes' ? Number(event.target.value) : event.target.value)
+      value: (!isRange ? Number(event.target.value) : event.target.value.split('-'))
     };
     this.setState({
       [targetSelect]: objToSave
@@ -91,8 +90,8 @@ class FilterMovies extends Component {
               className=""
               id="votes"
               name="votes"
-              value={this.state.votes.value}
-              onChange={this.handleSelectChange}
+              value={this.state.votes.value === 'Any' ? 'Any' : `${this.state.votes.value[0]}-${this.state.votes.value[1]}`}
+              onChange={event => this.handleSelectChange(event, true)}
             >
               {votesOptions}
             </select>

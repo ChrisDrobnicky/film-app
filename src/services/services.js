@@ -19,7 +19,11 @@ export const filterMovies = (filters) => {
   let basicURL = `${apiURL}/discover/movie?api_key=${apiKey}`;
   for (let filter in filters) {
     if (filters.hasOwnProperty(filter) && filters[filter].value && filters[filter].value !== 'Any') {
-      basicURL = basicURL.concat(`&${filters[filter].apiName}=${filters[filter].value}`)
+      if (Array.isArray(filters[filter].value)) {
+        filters[filter].value.forEach(elem => basicURL.concat(`&${filters[filter].apiName}=${elem}`));
+      } else {
+        basicURL = basicURL.concat(`&${filters[filter].apiName}=${filters[filter].value}`)
+      }
     }
   }
   return axios.get(basicURL);
