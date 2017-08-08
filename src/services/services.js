@@ -15,6 +15,11 @@ export const getThisYearMovies = (year) => {
   return axios.get(moviesURL);
 };
 
+export const getGenres = () => {
+  const genresURL = `${apiURL}/genre/movie/list?api_key=${apiKey}&language=en-US`;
+  return axios.get(genresURL);
+};
+
 export const filterMovies = (filters) => {
   let basicURL = `${apiURL}/discover/movie?api_key=${apiKey}`;
   for (let filter in filters) {
@@ -31,5 +36,4 @@ export const filterMovies = (filters) => {
 };
 
 export const getMovieDetails = (id) => axios.get(`${apiURL}/movie/${id}?api_key=${apiKey}&language=en-US`);
-
 export const getMovieCast = (id) => axios.get(`${apiURL}/movie/${id}/credits?api_key=${apiKey}`);

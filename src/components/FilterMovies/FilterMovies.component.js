@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+import axios from 'axios';
 
+import {getGenres} from '../../services/services';
 import styles from './FilterMovies.stylesheet.css';
 
 const votes = ['Any', '0-1000', '1000-5000', '5000-10000', '10000-'];
@@ -7,12 +11,16 @@ const votesOptions = votes.map(vote => {
   return <option value={vote} key={vote}>{vote}</option>
 });
 
+const isLoadingExternally = true;
+
 class FilterMovies extends Component {
   constructor() {
     super();
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.generateNumericalOptions = this.generateNumericalOptions.bind(this);
+    this.generateGenresOptions = this.generateGenresOptions.bind(this);
+
     this.state = {
       releaseYearFrom: {
         apiName: 'primary_release_date.gte',
@@ -33,8 +41,13 @@ class FilterMovies extends Component {
       ratingMax: {
         apiName: 'vote_average.lte',
         value: 10
-      }
+      },
+      genresOptions: []
     };
+  }
+
+  componentDidMount() {
+    this.generateGenresOptions();
   }
 
   handleSelectChange(event, isRange) {
@@ -50,6 +63,18 @@ class FilterMovies extends Component {
 
   handleSearchClick() {
     this.props.updateMovies(this.state);
+  }
+
+  generateGenresOptions() {
+    getGenres().then(res => {
+      const genresOptions = res.data.genres.map(genre => {
+        return {
+          value: genre.name,
+          label: genre.id
+        }
+      });
+      this.setState({genresOptions})
+    });
   }
 
   generateNumericalOptions(min, max) {
@@ -126,6 +151,15 @@ class FilterMovies extends Component {
             >
               {this.generateNumericalOptions(this.state.ratingMin.value || 0, 10)}
             </select>
+          </fieldset>
+          <fieldset>
+            <legend>Genres:</legend>
+            <Select
+              name="form-field-name"
+              value="one"
+              options={this.state.genresOptions}
+              isLoading={isLoadingExternally}
+            />
           </fieldset>
           <button
             className="positive ui tiny button"
