@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import axios from 'axios';
 
 import {getGenres} from '../../services/services';
 import styles from './FilterMovies.stylesheet.css';
@@ -69,8 +68,8 @@ class FilterMovies extends Component {
     getGenres().then(res => {
       const genresOptions = res.data.genres.map(genre => {
         return {
-          value: genre.name,
-          label: genre.id
+          value: genre.id,
+          label: genre.name
         }
       });
       this.setState({genresOptions})
@@ -159,6 +158,7 @@ class FilterMovies extends Component {
               value="one"
               options={this.state.genresOptions}
               isLoading={isLoadingExternally}
+              multi={true}
             />
           </fieldset>
           <button
