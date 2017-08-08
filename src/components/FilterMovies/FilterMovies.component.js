@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
+import omit from 'lodash/omit';
 import 'react-select/dist/react-select.css';
 
 import {getGenres} from '../../services/services';
@@ -10,8 +11,6 @@ const votesOptions = votes.map(vote => {
   return <option value={vote} key={vote}>{vote}</option>
 });
 
-const isLoadingExternally = true;
-
 class FilterMovies extends Component {
   constructor() {
     super();
@@ -19,6 +18,7 @@ class FilterMovies extends Component {
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.generateNumericalOptions = this.generateNumericalOptions.bind(this);
     this.generateGenresOptions = this.generateGenresOptions.bind(this);
+    this.handleGenreSelect = this.handleGenreSelect.bind(this);
 
     this.state = {
       releaseYearFrom: {
@@ -41,7 +41,12 @@ class FilterMovies extends Component {
         apiName: 'vote_average.lte',
         value: 10
       },
-      genresOptions: []
+      genresOptions: [],
+      genres: {
+        apiName: 'with_genres',
+        value: [],
+        isList: true
+      }
     };
   }
 
@@ -60,8 +65,19 @@ class FilterMovies extends Component {
     });
   }
 
+  handleGenreSelect(value) {
+    const objToSave = {
+      apiName: this.state.genres.apiName,
+      isList: this.state.genres.isList,
+      value: value
+    };
+    this.setState({
+      genres: objToSave
+    })
+  }
+
   handleSearchClick() {
-    this.props.updateMovies(this.state);
+    this.props.updateMovies(omit(this.state, 'genresOptions'));
   }
 
   generateGenresOptions() {
@@ -76,6 +92,8 @@ class FilterMovies extends Component {
     });
   }
 
+
+
   generateNumericalOptions(min, max) {
     const numbers = [];
     for (let i = min; i <= max; i++) {
@@ -88,6 +106,7 @@ class FilterMovies extends Component {
   }
 
   render() {
+    const isLoadingExternally = (this.state.genresOptions.length === 0);
     return(
       <div className={styles.Wrapper}>
         <fieldset>
@@ -155,10 +174,11 @@ class FilterMovies extends Component {
             <legend>Genres:</legend>
             <Select
               name="form-field-name"
-              value="one"
+              value={this.state.genres.value}
               options={this.state.genresOptions}
               isLoading={isLoadingExternally}
               multi={true}
+              onChange={this.handleGenreSelect}
             />
           </fieldset>
           <button
