@@ -24,7 +24,6 @@ class SearchMovies extends Component {
     }));
   }
 
-
   updateMovies(filters) {
     this.setState({ isComponentLoading: true });
     filterMovies(filters).then(res => this.setState({

@@ -14,7 +14,7 @@ const votesOptions = votes.map(vote => {
 class FilterMovies extends Component {
   constructor() {
     super();
-    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.generateNumericalOptions = this.generateNumericalOptions.bind(this);
     this.generateGenresOptions = this.generateGenresOptions.bind(this);
@@ -46,7 +46,15 @@ class FilterMovies extends Component {
         apiName: 'with_genres',
         value: [],
         isList: true
-      }
+      },
+      runtimeMin: {
+        apiName: 'with_runtime.gte',
+        value: 'Any'
+      },
+      runtimeMax: {
+        apiName: 'with_runtime.lte',
+        value: 'Any'
+      },
     };
   }
 
@@ -54,7 +62,7 @@ class FilterMovies extends Component {
     this.generateGenresOptions();
   }
 
-  handleSelectChange(event, isRange) {
+  handleChange(event, isRange) {
     const targetSelect = event.target.name;
     const objToSave = {
       apiName: this.state[targetSelect].apiName,
@@ -92,8 +100,6 @@ class FilterMovies extends Component {
     });
   }
 
-
-
   generateNumericalOptions(min, max) {
     const numbers = [];
     for (let i = min; i <= max; i++) {
@@ -106,7 +112,6 @@ class FilterMovies extends Component {
   }
 
   render() {
-    const isLoadingExternally = (this.state.genresOptions.length === 0);
     return(
       <div className={styles.Wrapper}>
         <fieldset>
@@ -119,7 +124,7 @@ class FilterMovies extends Component {
               id="releaseYearFrom"
               name="releaseYearFrom"
               value={this.state.releaseYearFrom.value}
-              onChange={this.handleSelectChange}
+              onChange={this.handleChange}
             >
               {this.generateNumericalOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
             </select>
@@ -129,7 +134,7 @@ class FilterMovies extends Component {
               id="releaseYearTo"
               name="releaseYearTo"
               value={this.state.releaseYearTo.value}
-              onChange={this.handleSelectChange}
+              onChange={this.handleChange}
             >
               {this.generateNumericalOptions(this.state.releaseYearFrom.value || 1950, new Date().getFullYear())}
             </select>
@@ -142,7 +147,7 @@ class FilterMovies extends Component {
               id="votes"
               name="votes"
               value={this.state.votes.value === 'Any' ? 'Any' : `${this.state.votes.value[0]}-${this.state.votes.value[1]}`}
-              onChange={event => this.handleSelectChange(event, true)}
+              onChange={event => this.handleChange(event, true)}
             >
               {votesOptions}
             </select>
@@ -155,7 +160,7 @@ class FilterMovies extends Component {
               id="ratingMin"
               name="ratingMin"
               value={this.state.ratingMin.value}
-              onChange={this.handleSelectChange}
+              onChange={this.handleChange}
             >
               {this.generateNumericalOptions(0, this.state.ratingMax.value || 10)}
             </select>
@@ -165,7 +170,7 @@ class FilterMovies extends Component {
               id="ratingMax"
               name="ratingMax"
               value={this.state.ratingMax.value}
-              onChange={this.handleSelectChange}
+              onChange={this.handleChange}
             >
               {this.generateNumericalOptions(this.state.ratingMin.value || 0, 10)}
             </select>
@@ -176,10 +181,17 @@ class FilterMovies extends Component {
               name="form-field-name"
               value={this.state.genres.value}
               options={this.state.genresOptions}
-              isLoading={isLoadingExternally}
+              isLoading={this.state.genresOptions.length === 0}
               multi={true}
               onChange={this.handleGenreSelect}
             />
+          </fieldset>
+          <fieldset>
+            <legend>Runtime:</legend>
+            <label htmlFor="runtimeMin">Minutes from:</label>
+            <input id="runtimeMin" name="runtimeMin" value={this.state.runtimeMin.value} onChange={this.handleChange}/>
+            <label htmlFor="runtimeMax">Minutes to:</label>
+            <input id="runtimeMax" name="runtimeMax" value={this.state.runtimeMax.value} onChange={this.handleChange}/>
           </fieldset>
           <button
             className="positive ui tiny button"
