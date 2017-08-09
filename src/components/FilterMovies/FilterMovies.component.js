@@ -49,11 +49,11 @@ class FilterMovies extends Component {
       },
       runtimeMin: {
         apiName: 'with_runtime.gte',
-        value: 'Any'
+        value: 0
       },
       runtimeMax: {
         apiName: 'with_runtime.lte',
-        value: 'Any'
+        value: 240
       },
     };
   }
@@ -189,9 +189,26 @@ class FilterMovies extends Component {
           <fieldset>
             <legend>Runtime:</legend>
             <label htmlFor="runtimeMin">Minutes from:</label>
-            <input id="runtimeMin" name="runtimeMin" value={this.state.runtimeMin.value} onChange={this.handleChange}/>
+            <input
+              id="runtimeMin"
+              name="runtimeMin"
+              type="number"
+              min="0"
+              max={this.state.runtimeMax.value}
+              step="15"
+              value={this.state.runtimeMin.value}
+              onChange={this.handleChange}
+            />
             <label htmlFor="runtimeMax">Minutes to:</label>
-            <input id="runtimeMax" name="runtimeMax" value={this.state.runtimeMax.value} onChange={this.handleChange}/>
+            <input
+              id="runtimeMax"
+              name="runtimeMax"
+              type="number"
+              min={this.state.runtimeMin.value}
+              step="15"
+              value={this.state.runtimeMax.value}
+              onChange={this.handleChange}
+            />
           </fieldset>
           <button
             className="positive ui tiny button"
