@@ -48,7 +48,6 @@ class SearchMovies extends Component {
                   <th>Add </th>
                   <th>Title</th>
                   <th>Genres</th>
-                  <th>Cast</th>
                   <th>Rating</th>
                   <th>Votes</th>
                   <th>Release Year</th>

@@ -15,25 +15,16 @@ class MovieRow extends Component {
   }
 
   componentDidMount() {
-    axios.all([getMovieDetails(this.props.id), getMovieCast(this.props.id)])
-      .then(axios.spread((res1, res2) => {
-        const genres = res1.data.genres.map(genre => {
+    getMovieDetails(this.props.id).then(res => {
+        const genres = res.data.genres.map(genre => {
           return genre.name;
         });
-        const runtime = res1.data.runtime;
-        const cast = res2.data.cast.map(actor => {
-          return {
-            name: actor.name,
-            character: actor.character,
-            id: actor.id
-          }
-        });
+        const runtime = res.data.runtime;
         this.setState({
           genres,
           runtime,
-          cast
         })
-      }))
+      })
   }
 
   render() {
@@ -41,11 +32,6 @@ class MovieRow extends Component {
     const genreToDisplay = this.state.genres.map((genre, index) => {
       return index === this.state.genres.length - 1 ? genre : `${genre}, `;
     });
-    const castToDisplay = this.state.cast.map((actor, index) => {
-      return index > 4
-        ? null
-        : <li className={styles.movieCastItem} key={actor.id}> {`${actor.name} (as ${actor.character})`} </li>;
-      });
     const releaseDate = this.props.release_date;
     const releaseYear = (new Date(releaseDate)).getFullYear();
 
@@ -66,9 +52,6 @@ class MovieRow extends Component {
           <span>
             {genreToDisplay}
           </span>
-        </td>
-        <td className={styles.movieCast}>
-          <ul className={styles.movieCastList}>{castToDisplay}</ul>
         </td>
         <td className={styles.movieRating}>{this.props.vote_average}</td>
         <td className={styles.movieVotes}>{this.props.vote_count}</td>
