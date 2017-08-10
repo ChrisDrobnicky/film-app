@@ -9,6 +9,7 @@ class MovieRow extends Component {
     super();
     this.state = {
       genres: [],
+      runtime: '',
       cast: []
     }
   }
@@ -19,6 +20,7 @@ class MovieRow extends Component {
         const genres = res1.data.genres.map(genre => {
           return genre.name;
         });
+        const runtime = res1.data.runtime;
         const cast = res2.data.cast.map(actor => {
           return {
             name: actor.name,
@@ -28,6 +30,7 @@ class MovieRow extends Component {
         });
         this.setState({
           genres,
+          runtime,
           cast
         })
       }))
@@ -70,6 +73,7 @@ class MovieRow extends Component {
         <td className={styles.movieRating}>{this.props.vote_average}</td>
         <td className={styles.movieVotes}>{this.props.vote_count}</td>
         <td className={styles.movieDate}>{releaseYear}</td>
+        <td className={styles.movieRuntime}>{this.state.runtime}</td>
         <td className={styles.movieDetails}>
           <button className="ui small teal button">Show details</button>
         </td>
