@@ -5,9 +5,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "custom-react-scripts": "0.0.23",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-select": "^1.0.0-rc.5"
   },
   "devDependencies": {},
   "scripts": {

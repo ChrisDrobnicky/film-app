@@ -10,11 +10,34 @@ export const getUpcomingMovies = () => {
   return axios.get(upcomingURL);
 };
 
-export const get2017Movies = () => {
-  const movies2017URL = `${apiURL}/discover/movie?api_key=${apiKey}&sort_by=vote_count.desc&primary_release_year=2017`;
-  return axios.get(movies2017URL);
+export const getThisYearMovies = (year) => {
+  const moviesURL = `${apiURL}/discover/movie?api_key=${apiKey}&sort_by=vote_count.desc&primary_release_year=${year}`;
+  return axios.get(moviesURL);
+};
+
+export const getGenres = () => {
+  const genresURL = `${apiURL}/genre/movie/list?api_key=${apiKey}&language=en-US`;
+  return axios.get(genresURL);
+};
+
+export const filterMovies = (filters) => {
+  let basicURL = `${apiURL}/discover/movie?api_key=${apiKey}`;
+  for (let filter in filters) {
+    if (filters.hasOwnProperty(filter) && filters[filter].value !== null && filters[filter].value !== 'Any') {
+      if (filters[filter].isList && filters[filter].value.length > 0) {
+        const listToSave = filters[filter].value.map(genre => genre.value).join(',');
+        basicURL = basicURL.concat(`&${filters[filter].apiName}=${listToSave}`)
+      }
+      else if (Array.isArray(filters[filter].value)) {
+        filters[filter].value.forEach(
+          (elem, index) => basicURL = basicURL.concat(`&${filters[filter].apiName[index]}=${elem}`));
+      } else {
+        basicURL = basicURL.concat(`&${filters[filter].apiName}=${filters[filter].value}`)
+      }
+    }
+  }
+  return axios.get(basicURL);
 };
 
 export const getMovieDetails = (id) => axios.get(`${apiURL}/movie/${id}?api_key=${apiKey}&language=en-US`);
-
 export const getMovieCast = (id) => axios.get(`${apiURL}/movie/${id}/credits?api_key=${apiKey}`);
