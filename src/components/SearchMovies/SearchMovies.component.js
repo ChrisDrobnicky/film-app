@@ -29,7 +29,8 @@ class SearchMovies extends Component {
     filterMovies(filters).then(res => this.setState({
       movies: res.data.results,
       isComponentLoading: false
-    }))
+    })
+    )
   }
 
   render() {

@@ -23,8 +23,8 @@ export const getGenres = () => {
 export const filterMovies = (filters) => {
   let basicURL = `${apiURL}/discover/movie?api_key=${apiKey}`;
   for (let filter in filters) {
-    if (filters.hasOwnProperty(filter) && filters[filter].value && filters[filter].value !== 'Any') {
-      if (filters[filter].isList) {
+    if (filters.hasOwnProperty(filter) && filters[filter].value !== null && filters[filter].value !== 'Any') {
+      if (filters[filter].isList && filters[filter].value.length > 0) {
         const listToSave = filters[filter].value.map(genre => genre.value).join(',');
         basicURL = basicURL.concat(`&${filters[filter].apiName}=${listToSave}`)
       }
