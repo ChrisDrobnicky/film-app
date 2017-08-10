@@ -117,8 +117,8 @@ class FilterMovies extends Component {
         <fieldset>
           <legend className={styles.filterHeader}>Set filters:</legend>
           <fieldset>
-            <legend>Release date</legend>
-            <label htmlFor="releaseYearFrom">Year from:</label>
+            <legend>Release Year</legend>
+            <label htmlFor="releaseYearFrom">From:</label>
             <select
               className=""
               id="releaseYearFrom"
@@ -128,7 +128,7 @@ class FilterMovies extends Component {
             >
               {this.generateNumericalOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
             </select>
-            <label htmlFor="releaseYearTo">Year to:</label>
+            <label htmlFor="releaseYearTo">To:</label>
             <select
               className=""
               id="releaseYearTo"
@@ -187,7 +187,7 @@ class FilterMovies extends Component {
             />
           </fieldset>
           <fieldset>
-            <legend>Runtime(minutes):</legend>
+            <legend>Runtime (minutes):</legend>
             <label htmlFor="runtimeMin">Min:</label>
             <input
               id="runtimeMin"

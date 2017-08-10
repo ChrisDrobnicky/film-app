@@ -53,7 +53,7 @@ class MovieRow extends Component {
       <tr key={this.props.id} className={styles.tableRow}>
         <td className="collapsing">
           <div className="ui fitted slider checkbox">
-            <input type="checkbox"/> <label></label>
+            <input type="checkbox"/>
           </div>
         </td>
         <td className={styles.titleWrapper}>
