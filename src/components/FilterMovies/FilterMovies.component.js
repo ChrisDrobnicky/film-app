@@ -53,7 +53,7 @@ class FilterMovies extends Component {
       },
       runtimeMax: {
         apiName: 'with_runtime.lte',
-        value: 240
+        value: 300
       },
     };
   }
@@ -187,8 +187,8 @@ class FilterMovies extends Component {
             />
           </fieldset>
           <fieldset>
-            <legend>Runtime:</legend>
-            <label htmlFor="runtimeMin">Minutes from:</label>
+            <legend>Runtime(minutes):</legend>
+            <label htmlFor="runtimeMin">Min:</label>
             <input
               id="runtimeMin"
               name="runtimeMin"
@@ -199,7 +199,7 @@ class FilterMovies extends Component {
               value={this.state.runtimeMin.value}
               onChange={this.handleChange}
             />
-            <label htmlFor="runtimeMax">Minutes to:</label>
+            <label htmlFor="runtimeMax">Max:</label>
             <input
               id="runtimeMax"
               name="runtimeMax"
