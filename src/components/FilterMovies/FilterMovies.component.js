@@ -19,6 +19,7 @@ class FilterMovies extends Component {
     this.generateNumericalOptions = this.generateNumericalOptions.bind(this);
     this.generateGenresOptions = this.generateGenresOptions.bind(this);
     this.handleGenreSelect = this.handleGenreSelect.bind(this);
+    this.handleRandomSearchClick = this.handleRandomSearchClick.bind(this);
 
     this.state = {
       releaseYearFrom: {
@@ -86,6 +87,11 @@ class FilterMovies extends Component {
 
   handleSearchClick() {
     this.props.updateMovies(omit(this.state, 'genresOptions'));
+  }
+
+  handleRandomSearchClick() {
+    this.props.changeRandomStatus();
+    this.handleSearchClick()
   }
 
   generateGenresOptions() {
@@ -215,6 +221,12 @@ class FilterMovies extends Component {
             onClick={this.handleSearchClick}
           >
             Search
+          </button>
+          <button
+            className="info ui tiny button"
+            onClick={this.handleRandomSearchClick}
+          >
+            Random Search
           </button>
         </fieldset>
       </div>

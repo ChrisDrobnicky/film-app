@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import styles from './MovieRow.stylesheet.css';
 import config from '../../config';
-import {getMovieDetails, getMovieCast} from '../../services/services';
+import {getMovieDetails} from '../../services/services';
 
 class MovieRow extends Component {
   constructor() {
@@ -10,7 +9,6 @@ class MovieRow extends Component {
     this.state = {
       genres: [],
       runtime: '',
-      cast: []
     }
   }
 
