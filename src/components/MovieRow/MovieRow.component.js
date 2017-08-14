@@ -27,6 +27,7 @@ class MovieRow extends Component {
 
   render() {
     const imageBaseURL = config.imageBaseURL;
+    const imageSmall = config.imageSmall
     const genreToDisplay = this.state.genres.map((genre, index) => {
       return index === this.state.genres.length - 1 ? genre : `${genre}, `;
     });
@@ -43,7 +44,7 @@ class MovieRow extends Component {
         <td className={styles.titleWrapper}>
           <span className={styles.movieTitle}> {this.props.title} </span>
           <span className={styles.movieImage}>
-            <img src={`${imageBaseURL}${this.props.poster_path}`} alt="Movie Poster"/>
+            <img src={`${imageBaseURL}${imageSmall}${this.props.poster_path}`} alt="Movie Poster"/>
           </span>
         </td>
         <td className={styles.movieGenre}>

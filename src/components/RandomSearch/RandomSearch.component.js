@@ -27,24 +27,44 @@ class RandomSearch extends Component {
 
   render() {
     const imageBaseURL = config.imageBaseURL;
+    const imageMedium = config.imageMedium;
     const genreToDisplay = this.state.genres.map((genre, index) => {
       return index === this.state.genres.length - 1 ? genre : `${genre}, `;
     });
+    const releaseDate = this.props.release_date;
+    const releaseYear = (new Date(releaseDate)).getFullYear();
+    const runtimeHours = Math.floor(this.state.runtime/60);
+    const runtimeMinutes = this.state.runtime  % 60
 
     return (
       <div className="wrapper">
-        <div>Title:{this.props.title}</div>
-        <div>
-          <span>
-            <img src={`${imageBaseURL}${this.props.poster_path}`} alt="Movie Poster"/>
-          </span>
-        </div>
-        <div>Votes:{this.props.vote_count}</div>
-        <div>Rating:{this.props.vote_average}</div>
-        <div>Release Year:{this.props.release_date}</div>
-        <div>Runtime:{this.state.runtime}</div>
-        <div>
-          <span> Genres: {genreToDisplay}</span>
+        <div className="ui card">
+          <div className="content">
+            <a className="header">{this.props.title}</a>
+            <div className="meta">
+              <span className="date">({releaseYear})</span>
+            </div>
+            <div className="image">
+              <img src={`${imageBaseURL}${imageMedium}${this.props.poster_path}`} alt="Movie Poster"/>
+            </div>
+            <div className="description">
+              {this.props.overview}
+            </div>
+          </div>
+          <div className="content">
+            <span>
+              {runtimeHours}h {runtimeMinutes}min
+            </span>
+            <span className="right floated">
+              <i className="yellow small star icon"></i>
+              {this.props.vote_average}/10 ({this.props.vote_count} votes)
+            </span>
+          </div>
+          <div className="extra content">
+            <span className="">
+              Genres: {genreToDisplay}
+            </span>
+          </div>
         </div>
       </div>
     )

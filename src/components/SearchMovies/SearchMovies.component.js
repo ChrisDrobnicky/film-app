@@ -43,7 +43,6 @@ class SearchMovies extends Component {
   render() {
     const allMovies = this.state.movies;
     const randomMovie = allMovies[Math.floor(Math.random()*allMovies.length)];
-    debugger;
     let componentToRender = !this.state.isRandomMode ? (
       <table className={`ui compact celled definition table`}>
         <thead className={styles.tableHead}>
