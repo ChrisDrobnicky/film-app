@@ -36,14 +36,14 @@ class SearchMovies extends Component {
     )
   }
 
-  changeRandomStatus() {
-    this.setState({ isRandomMode: true })
+  changeRandomStatus(status) {
+    this.setState({ isRandomMode: status })
   }
 
   render() {
     const allMovies = this.state.movies;
-    const randomMovie = allMovies[Math.floor(Math.random()*allMovies.length)];
-    let componentToRender = !this.state.isRandomMode ? (
+    const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
+    let resultsComponent = !this.state.isRandomMode ? (
       <table className={`ui compact celled definition table`}>
         <thead className={styles.tableHead}>
           <tr>
@@ -72,7 +72,8 @@ class SearchMovies extends Component {
       </table>
     ) : (
         <RandomSearch
-          id={randomMovie.id} key={randomMovie.id}
+          id={randomMovie.id}
+          key={randomMovie.id}
           title={randomMovie.title}
           poster_path={randomMovie.poster_path}
           vote_count={randomMovie.vote_count}
@@ -87,7 +88,7 @@ class SearchMovies extends Component {
           updateMovies={this.updateMovies}
           changeRandomStatus={this.changeRandomStatus}
         />
-        {this.state.isComponentLoading ? <span>Loading...</span> : componentToRender}
+        {this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent}
       </div>
     )
   }

@@ -33,8 +33,8 @@ class RandomSearch extends Component {
     });
     const releaseDate = this.props.release_date;
     const releaseYear = (new Date(releaseDate)).getFullYear();
-    const runtimeHours = Math.floor(this.state.runtime/60);
-    const runtimeMinutes = this.state.runtime  % 60
+    const runtimeHours = Math.floor(this.state.runtime / 60);
+    const runtimeMinutes = this.state.runtime % 60;
 
     return (
       <div className="wrapper">
