@@ -84,7 +84,8 @@ class FilterMovies extends Component {
     })
   }
 
-  handleSearchClick() {
+  handleSearchClick(status) {
+    this.props.changeRandomStatus(status);
     this.props.updateMovies(omit(this.state, 'genresOptions'));
   }
 
@@ -212,9 +213,15 @@ class FilterMovies extends Component {
           </fieldset>
           <button
             className="positive ui tiny button"
-            onClick={this.handleSearchClick}
+            onClick={() => this.handleSearchClick(false)}
           >
             Search
+          </button>
+          <button
+            className="info ui tiny button"
+            onClick={() => this.handleSearchClick(true)}
+          >
+            Random Search
           </button>
         </fieldset>
       </div>
