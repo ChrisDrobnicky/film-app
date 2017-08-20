@@ -57,9 +57,8 @@ class SearchMovies extends Component {
 
   getClickedMovie(movieID) {
     return this.state.movies.find(movie => {
-        return movie.id === movieID;
-      }
-    );
+      return movie.id === movieID;
+    });
   }
 
   render() {
@@ -110,24 +109,25 @@ class SearchMovies extends Component {
     );
     return(
       <div className={styles.Wrapper}>
+        {!this.state.isDetailsMode} ? (
         <FilterMovies
           updateMovies={this.updateMovies}
           changeRandomStatus={this.changeRandomStatus}
         />
         {this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent}
-        {this.state.isDetailsMode &&
-          <MovieDetails
-            id={clickedMovie.id}
-            key={clickedMovie.id}
-            title={clickedMovie.title}
-            posterPath={clickedMovie.poster_path}
-            voteCount={clickedMovie.vote_count}
-            voteAverage={clickedMovie.vote_average}
-            releaseDate={clickedMovie.release_date}
-            overview={randomMovie.overview}
-            blelum={this.getClickedMovie(this.state.clickedMovieID)}
-          />
-        }
+        ) : (
+        <MovieDetails
+          id={clickedMovie.id}
+          key={clickedMovie.id}
+          title={clickedMovie.title}
+          posterPath={clickedMovie.poster_path}
+          voteCount={clickedMovie.vote_count}
+          voteAverage={clickedMovie.vote_average}
+          releaseDate={clickedMovie.release_date}
+          overview={clickedMovie.overview}
+          changeDetailsStatus={this.changeDetailsStatus}
+        />
+        );
       </div>
     )
   }

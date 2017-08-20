@@ -6,6 +6,7 @@ import {getMovieDetails} from '../../services/services';
 class MovieRow extends Component {
   constructor() {
     super();
+    this.handleDetailsClick = this.handleDetailsClick.bind(this);
     this.state = {
       genres: [],
       runtime: '',
