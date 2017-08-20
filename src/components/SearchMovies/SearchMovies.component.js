@@ -109,14 +109,14 @@ class SearchMovies extends Component {
     );
     return(
       <div className={styles.Wrapper}>
-        {!this.state.isDetailsMode} ? (
-        <FilterMovies
-          updateMovies={this.updateMovies}
-          changeRandomStatus={this.changeRandomStatus}
-        />
-        {this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent}
-        ) : (
-        <MovieDetails
+        {!this.state.isDetailsMode ? (
+          <FilterMovies
+            updateMovies={this.updateMovies}
+            changeRandomStatus={this.changeRandomStatus}
+          />
+          this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent;
+          ) : (
+          <MovieDetails
           id={clickedMovie.id}
           key={clickedMovie.id}
           title={clickedMovie.title}
@@ -126,8 +126,9 @@ class SearchMovies extends Component {
           releaseDate={clickedMovie.release_date}
           overview={clickedMovie.overview}
           changeDetailsStatus={this.changeDetailsStatus}
-        />
-        );
+          />
+          );
+        }
       </div>
     )
   }
