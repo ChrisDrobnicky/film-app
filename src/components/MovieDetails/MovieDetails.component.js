@@ -58,8 +58,8 @@ class MovieDetails extends Component {
     const runtimeMinutes = this.state.runtime % 60;
 
     return(
-      <div className="wrapper">
-        <div className="ui active bottom modal">
+      <div className={styles.Wrapper}>
+        <div className="ui active modal">
           <div className="header">
             <span className="">{this.props.title} ({releaseYear})</span>
           </div>
@@ -75,7 +75,7 @@ class MovieDetails extends Component {
             <ul>Cast: {castToDisplay}</ul>
             <div>Genres: {genreToDisplay}</div>
           </div>
-          <div className="actions">
+          <div className="">
             <button className="ui cancel button" onClick={() => this.handleBackClick(false)}>Back</button>
           </div>
         </div>

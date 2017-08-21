@@ -109,25 +109,24 @@ class SearchMovies extends Component {
     );
     return(
       <div className={styles.Wrapper}>
-        {!this.state.isDetailsMode ? (
-          <FilterMovies
-            updateMovies={this.updateMovies}
-            changeRandomStatus={this.changeRandomStatus}
-          />
-          this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent;
-          ) : (
-          <MovieDetails
-          id={clickedMovie.id}
-          key={clickedMovie.id}
-          title={clickedMovie.title}
-          posterPath={clickedMovie.poster_path}
-          voteCount={clickedMovie.vote_count}
-          voteAverage={clickedMovie.vote_average}
-          releaseDate={clickedMovie.release_date}
-          overview={clickedMovie.overview}
-          changeDetailsStatus={this.changeDetailsStatus}
-          />
-          );
+        <FilterMovies
+          updateMovies={this.updateMovies}
+          changeRandomStatus={this.changeRandomStatus}
+        />
+        {
+          !this.state.isDetailsMode ?
+            this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent
+            : <MovieDetails
+              id={clickedMovie.id}
+              key={clickedMovie.id}
+              title={clickedMovie.title}
+              posterPath={clickedMovie.poster_path}
+              voteCount={clickedMovie.vote_count}
+              voteAverage={clickedMovie.vote_average}
+              releaseDate={clickedMovie.release_date}
+              overview={clickedMovie.overview}
+              changeDetailsStatus={this.changeDetailsStatus}
+              />
         }
       </div>
     )

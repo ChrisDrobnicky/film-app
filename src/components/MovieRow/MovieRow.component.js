@@ -63,7 +63,11 @@ class MovieRow extends Component {
         <td className={styles.movieDate}>{releaseYear}</td>
         <td className={styles.movieRuntime}>{this.state.runtime}</td>
         <td className={styles.movieDetails}>
-          <button className="ui small teal button" onClick={(event, movieID) => this.handleDetailsClick(true, this.props.id)}>Show details</button>
+          <button
+            className="ui small teal button"
+            onClick={(event, movieID) => this.handleDetailsClick(true, this.props.id)}
+          >Show details
+          </button>
         </td>
       </tr>
     )
