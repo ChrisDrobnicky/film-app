@@ -59,24 +59,26 @@ class MovieDetails extends Component {
 
     return(
       <div className={styles.Wrapper}>
-        <div className="ui active modal">
+        <div className="ui active modal" style={{top: "10%"}}>
           <div className="header">
             <span className="">{this.props.title} ({releaseYear})</span>
           </div>
-          <div className="image content">
-            <img className="image" src={`${imageBaseURL}${imageMedium}${this.props.posterPath}`} alt="Movie Poster"/>
+          <div className="scrolling content">
+            <div className="image content">
+              <img className="image" src={`${imageBaseURL}${imageMedium}${this.props.posterPath}`} alt="Movie Poster"/>
               <div className="description">
                 <p>{this.props.overview}</p>
               </div>
-          </div>
-          <div className="content">
-            <p><i className="yellow small star icon"></i>{this.props.voteAverage}/10 ({this.props.voteCount} votes)</p>
-            <p>Runtime: {runtimeHours}h {runtimeMinutes}min </p>
-            <ul>Cast: {castToDisplay}</ul>
-            <div>Genres: {genreToDisplay}</div>
-          </div>
-          <div className="">
-            <button className="ui cancel button" onClick={() => this.handleBackClick(false)}>Back</button>
+            </div>
+            <div className="content">
+              <p><i className="yellow small star icon"></i>{this.props.voteAverage}/10 ({this.props.voteCount} votes)</p>
+              <p>Runtime: {runtimeHours}h {runtimeMinutes}min </p>
+              <ul>Cast: {castToDisplay}</ul>
+              <div>Genres: {genreToDisplay}</div>
+            </div>
+            <div className="">
+              <button className="ui cancel button" onClick={() => this.handleBackClick(false)}>Back</button>
+            </div>
           </div>
         </div>
       </div>
