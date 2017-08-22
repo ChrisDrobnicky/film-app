@@ -105,6 +105,8 @@ class SearchMovies extends Component {
           vote_average={randomMovie.vote_average}
           release_date={randomMovie.release_date}
           overview={randomMovie.overview}
+          changeDetailsStatus={this.changeDetailsStatus}
+          saveMovieID={this.saveMovieID}
         />
     );
     return(
