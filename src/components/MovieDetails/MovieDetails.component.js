@@ -50,7 +50,7 @@ class MovieDetails extends Component {
     const castToDisplay = this.state.cast.map((actor, index) => {
       return index > 4
         ? null
-        : <li className={styles.movieCastItem} key={actor.id}> {`${actor.name} (as ${actor.character})`} </li>;
+        : <li className={styles.castItem} key={actor.id}> {`${actor.name} (as ${actor.character})`} </li>;
     });
     const releaseDate = this.props.releaseDate;
     const releaseYear = (new Date(releaseDate)).getFullYear();
@@ -61,23 +61,42 @@ class MovieDetails extends Component {
       <div className={styles.Wrapper}>
         <div className="ui active modal" style={{top: "10%"}}>
           <div className="header">
-            <span className="">{this.props.title} ({releaseYear})</span>
+            <div className={styles.modalHeader}>
+              <p className={styles.title}>{this.props.title} <span className={styles.year}>({releaseYear})</span></p>
+              <div className={styles.rating}>
+                <span className={styles.average}>
+                  <i className="yellow large star icon"/>
+                  {this.props.voteAverage}
+                </span>
+                <span className={styles.count}>/10 ({this.props.voteCount} votes) </span>
+              </div>
+              <div className={styles.runtime}>
+                <i className="hourglass empty large icon"/>
+                {runtimeHours}h {runtimeMinutes}min
+              </div>
+              <div className={styles.genres}>Genres: <span className={styles.genresItem}>{genreToDisplay}</span></div>
+            </div>
           </div>
-          <div className="scrolling content">
-            <div className="image content">
-              <img className="image" src={`${imageBaseURL}${imageMedium}${this.props.posterPath}`} alt="Movie Poster"/>
-              <div className="description">
+          <div className={`scrolling content ${styles.modalContent}`}>
+            <div className={`image content ${styles.imageWrapper}`}>
+              <img
+                className={`image ${styles.movieImage}`}
+                src={`${imageBaseURL}${imageMedium}${this.props.posterPath}`}
+                alt="Movie Poster"
+              />
+              <div className={`description ${styles.description}`}>
                 <p>{this.props.overview}</p>
               </div>
             </div>
             <div className="content">
-              <p><i className="yellow small star icon"></i>{this.props.voteAverage}/10 ({this.props.voteCount} votes)</p>
-              <p>Runtime: {runtimeHours}h {runtimeMinutes}min </p>
-              <ul>Cast: {castToDisplay}</ul>
-              <div>Genres: {genreToDisplay}</div>
+              <h4 className={styles.castHeader}>Cast:</h4>
+              <ul className={styles.castList}>{castToDisplay}</ul>
             </div>
-            <div className="">
-              <button className="ui cancel button" onClick={() => this.handleBackClick(false)}>Back</button>
+            <div className={styles.closeWrapper} onClick={() => this.handleBackClick(false)}>
+              <i className="window close big teal icon"/>
+            </div>
+            <div className={styles.cancelButtonWrapper}>
+              <button className="ui cancel large teal button" onClick={() => this.handleBackClick(false)}>Back</button>
             </div>
           </div>
         </div>
