@@ -6,6 +6,7 @@ import {getMovieDetails} from '../../services/services';
 class RandomSearch extends Component {
   constructor() {
     super();
+    this.handleDetailsClick = this.handleDetailsClick.bind(this);
     this.state = {
       genres: [],
       runtime: '',
@@ -25,6 +26,12 @@ class RandomSearch extends Component {
       })
   }
 
+  handleDetailsClick(event, status, movieID) {
+    event.preventDefault();
+    this.props.changeDetailsStatus(status);
+    this.props.saveMovieID(movieID)
+  }
+
   render() {
     const imageBaseURL = config.imageBaseURL;
     const imageMedium = config.imageMedium;
@@ -40,28 +47,38 @@ class RandomSearch extends Component {
       <div className="wrapper">
         <div className="ui card">
           <div className="content">
-            <a className="header">{this.props.title}</a>
+            <a
+              className="header"
+              title="Show movie details"
+              onClick={(event, status, movieID) => this.handleDetailsClick(event, true, this.props.id)}
+            >
+              {this.props.title}
+            </a>
             <div className="meta">
               <span className="date">({releaseYear})</span>
             </div>
-            <div className="image">
-              <img src={`${imageBaseURL}${imageMedium}${this.props.poster_path}`} alt="Movie Poster"/>
+            <div className={styles.imageWrapper}>
+              <div className="image">
+                <img src={`${imageBaseURL}${imageMedium}${this.props.poster_path}`} alt="Movie Poster"/>
+              </div>
             </div>
             <div className="description">
               {this.props.overview}
             </div>
           </div>
           <div className="content">
-            <span>
-              {runtimeHours}h {runtimeMinutes}min
-            </span>
-            <span className="right floated">
-              <i className="yellow small star icon"></i>
-              {this.props.vote_average}/10 ({this.props.vote_count} votes)
-            </span>
+            <div className={styles.contentWrapper}>
+              <span className={styles.rating}>
+                <i className="yellow small star icon"></i>
+                {this.props.vote_average}/10 ({this.props.vote_count} votes)
+              </span>
+              <span className={styles.runtime}>
+                {runtimeHours}h {runtimeMinutes}min
+              </span>
+            </div>
           </div>
           <div className="extra content">
-            <span className="">
+            <span className="movieGenre">
               Genres: {genreToDisplay}
             </span>
           </div>

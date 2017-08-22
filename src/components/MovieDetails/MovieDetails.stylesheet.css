@@ -1,0 +1,81 @@
+.Wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(1, 1, 1, 0.48); }
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column; }
+
+.title {
+  order: 1;
+  font-size: 1.1em; }
+
+.year {
+  font-size: 1em;
+  color: #9e9e9e; }
+
+.rating {
+  order: 2; }
+
+.average {
+  font-size: 0.8em; }
+
+.count {
+  font-size: 0.65em;
+  color: #9e9e9e; }
+
+.runtime {
+  order: 3;
+  font-size: 0.8em; }
+
+.genres {
+  order: 4;
+  font-size: 0.8em; }
+
+.genresItem {
+  font-weight: 300; }
+
+.modalContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
+.imageWrapper {
+  order: 1;
+  margin: 0.5em 0.5em 1.2em 0.5em;
+  flex-basis: 0; }
+
+.overviewWrapper {
+  order: 2;
+  flex-basis: 0;
+  flex-grow: 1; }
+
+.castWrapper {
+  order: 3;
+  flex-basis: 0;
+  flex-grow: 1; }
+
+.overview {
+  padding-top: 0.5em; }
+
+.castHeader {
+  font-size: 1.2em; }
+
+.castList {
+  list-style-type: none; }
+
+.cancelButtonWrapper {
+  text-align: center; }
+
+.closeWrapper {
+  position: absolute;
+  top: 1em;
+  right: 0.85em;
+  cursor: pointer; }
+
+/*# sourceMappingURL=MovieDetails.stylesheet.css.map */

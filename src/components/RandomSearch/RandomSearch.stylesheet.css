@@ -1,26 +1,14 @@
-.tableRow {
-  font-size: 1.2em;
+.imageWrapper {
   text-align: center; }
 
-.titleWrapper {
+.contentWrapper {
   display: flex;
-  flex-direction: column; }
+  justify-content: space-around; }
 
-.movieTitle {
-  order: 1;
-  font-weight: 800;
-  margin-bottom: 1em; }
+.rating {
+  order: 1; }
 
-.movieImage {
-  order: 2;
-  text-align: center; }
+.runtime {
+  order: 2; }
 
-.movieCastList {
-  list-style-type: none;
-  text-align: left;
-  padding-left: 1em; }
-
-.movieCastItem {
-  padding-bottom: 5px; }
-
-/*# sourceMappingURL=RandomSearch.stylesheet.css.map.map */
+/*# sourceMappingURL=RandomSearch.stylesheet.css.map */
