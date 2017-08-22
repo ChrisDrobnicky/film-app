@@ -78,19 +78,21 @@ class MovieDetails extends Component {
             </div>
           </div>
           <div className={`scrolling content ${styles.modalContent}`}>
-            <div className={`image content ${styles.imageWrapper}`}>
-              <img
-                className={`image ${styles.movieImage}`}
-                src={`${imageBaseURL}${imageMedium}${this.props.posterPath}`}
-                alt="Movie Poster"
-              />
-              <div className={`description ${styles.description}`}>
-                <p>{this.props.overview}</p>
+            <div className={styles.modalContent}>
+              <div className={`image content ${styles.imageWrapper}`}>
+                <img
+                  className={`image ${styles.movieImage}`}
+                  src={`${imageBaseURL}${imageMedium}${this.props.posterPath}`}
+                  alt="Movie Poster"
+                />
               </div>
-            </div>
-            <div className="content">
-              <h4 className={styles.castHeader}>Cast:</h4>
-              <ul className={styles.castList}>{castToDisplay}</ul>
+              <div className={`content ${styles.overviewWrapper}`}>
+                <p className={styles.overview}>{this.props.overview}</p>
+              </div>
+              <div className={`content ${styles.castWrapper}`}>
+                <h4 className={styles.castHeader}>Cast:</h4>
+                <ul className={styles.castList}>{castToDisplay}</ul>
+              </div>
             </div>
             <div className={styles.closeWrapper} onClick={() => this.handleBackClick(false)}>
               <i className="window close big teal icon"/>

@@ -40,9 +40,28 @@
 .genresItem {
   font-weight: 300; }
 
+.modalContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
 .imageWrapper {
-  text-align: center;
-  margin: 0.5em 0.5em 1.2em 0.5em; }
+  order: 1;
+  margin: 0.5em 0.5em 1.2em 0.5em;
+  flex-basis: 0; }
+
+.overviewWrapper {
+  order: 2;
+  flex-basis: 0;
+  flex-grow: 1; }
+
+.castWrapper {
+  order: 3;
+  flex-basis: 0;
+  flex-grow: 1; }
+
+.overview {
+  padding-top: 0.5em; }
 
 .castHeader {
   font-size: 1.2em; }
