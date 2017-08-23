@@ -47,24 +47,27 @@
 
 .imageWrapper {
   order: 1;
-  margin: 0.5em 0.5em 1.2em 0.5em;
-  flex-basis: 0; }
+  margin: 0.5em 0.5em 1.2em 0.5em; }
+
+.descriptionWrapper {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
 
 .overviewWrapper {
-  order: 2;
-  flex-basis: 0;
-  flex-grow: 1; }
+  order: 1; }
+
+.overviewHeader {
+  font-size: 1.2em;
+  margin-bottom: 0.5em; }
 
 .castWrapper {
-  order: 3;
-  flex-basis: 0;
-  flex-grow: 1; }
-
-.overview {
-  padding-top: 0.5em; }
+  order: 2; }
 
 .castHeader {
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  margin-bottom: 0.5em; }
 
 .castList {
   list-style-type: none; }

@@ -6,7 +6,7 @@ import {
 
 import Header from '../Header/Header.component';
 import SearchMovies from '../SearchMovies/SearchMovies.component';
-import YourMovies from '../YourMovies/YourMovies.component';
+import YourMovies from '../MyMovies/MyMovies.component';
 import About from '../About/About.component';
 import Footer from '../Footer/Footer.component';
 import styles from './App.stylesheet.css';

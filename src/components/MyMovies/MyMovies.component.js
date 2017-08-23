@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './YourMovies.stylesheet.css';
+import styles from './MyMovies.stylesheet.css';
 
 const YourMovies = () => (
   <div className={styles.Wrapper}>

@@ -7,9 +7,11 @@ class MovieRow extends Component {
   constructor() {
     super();
     this.handleDetailsClick = this.handleDetailsClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       genres: [],
       runtime: '',
+      inputON: false,
     }
   }
 
@@ -31,6 +33,12 @@ class MovieRow extends Component {
     this.props.saveMovieID(movieID)
   }
 
+  handleInputChange(event) {
+    this.setState({ inputON: !this.state.inputON});
+    let selectedMovieID = Number(event.target.parentNode.parentNode.parentNode.id);
+    this.state.inputON ? this.props.handleAddMyMovie(selectedMovieID) : this.props.handleDeleteMyMovie(selectedMovieID);
+  }
+
   render() {
     const imageBaseURL = config.imageBaseURL;
     const imageSmall = config.imageSmall;
@@ -41,10 +49,18 @@ class MovieRow extends Component {
     const releaseYear = (new Date(releaseDate)).getFullYear();
 
     return (
-      <tr key={this.props.id} className={styles.tableRow}>
+      <tr
+        key={this.props.id}
+        id={this.props.id}
+        className={styles.tableRow}>
         <td className="collapsing">
           <div className="ui fitted slider checkbox">
-            <input type="checkbox"/> <label></label>
+            <input
+              type="checkbox"
+              onChange={this.handleInputChange}
+              value={this.state.inputValue}
+            />
+            <label></label>
           </div>
         </td>
         <td className={styles.titleWrapper}>

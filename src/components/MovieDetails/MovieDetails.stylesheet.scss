@@ -59,27 +59,34 @@
 .imageWrapper {
   order: 1;
   margin: 0.5em 0.5em 1.2em 0.5em;
-  flex-basis: 0;
 }
 
-.overviewWrapper {
+.descriptionWrapper {
   order: 2;
-  flex-basis: 0;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.overviewWrapper {
+  order: 1;
 }
 
-.castWrapper {
-  order: 3;
-  flex-basis: 0;
-  flex-grow: 1;
+.overviewHeader {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
 }
 
 .overview {
-  padding-top: 0.5em;
+
+}
+
+.castWrapper {
+  order: 2;
 }
 
 .castHeader {
   font-size: 1.2em;
+  margin-bottom: 0.5em;
 }
 
 .castList {
