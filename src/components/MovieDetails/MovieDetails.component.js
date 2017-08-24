@@ -52,8 +52,7 @@ class MovieDetails extends Component {
         ? null
         : <li className={styles.castItem} key={actor.id}> {`${actor.name} (as ${actor.character})`} </li>;
     });
-    const releaseDate = this.props.releaseDate;
-    const releaseYear = (new Date(releaseDate)).getFullYear();
+    const releaseYear = this.props.releaseYear;
     const runtimeHours = Math.floor(this.state.runtime / 60);
     const runtimeMinutes = this.state.runtime % 60;
 

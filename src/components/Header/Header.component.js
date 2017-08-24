@@ -17,7 +17,7 @@ const Header = () => (
           <Link to="/" replace className={styles.navLink}>Search Movies</Link>
         </li>
         <li className={styles.navListItem}>
-          <Link to="/your-movies" replace className={styles.navLink}>Your Movies</Link>
+          <Link to="/my-movies" replace className={styles.navLink}>My Movies</Link>
         </li>
         <li className={styles.navListItem}>
           <Link to="/about" replace className={styles.navLink}>About</Link>

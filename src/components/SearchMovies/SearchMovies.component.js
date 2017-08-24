@@ -19,7 +19,6 @@ class SearchMovies extends Component {
     this.getMovieToDetail = this.getMovieToDetail.bind(this);
     this.saveMovieID = this.saveMovieID.bind(this);
 
-
     this.state = {
       movies: [],
       isComponentLoading: true,
@@ -69,7 +68,7 @@ class SearchMovies extends Component {
     const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
     const movieToDetail  = this.getMovieToDetail(this.state.detailedMovieID);
     let resultsComponent = !this.state.isRandomMode ? (
-      <table className={`ui compact celled definition table`}>
+      <table className={`ui compact celled table`}>
         <thead className={styles.tableHead}>
         <tr>
           <th>Add </th>
@@ -91,7 +90,8 @@ class SearchMovies extends Component {
             posterPath={movie.poster_path}
             voteCount={movie.vote_count}
             voteAverage={movie.vote_average}
-            releaseDate={movie.release_date}
+            releaseYear={new Date(movie.release_date).getFullYear()}
+            overview={movie.overview}
             changeDetailsStatus={this.changeDetailsStatus}
             saveMovieID={this.saveMovieID}
           />
@@ -106,7 +106,7 @@ class SearchMovies extends Component {
         poster_path={randomMovie.poster_path}
         vote_count={randomMovie.vote_count}
         vote_average={randomMovie.vote_average}
-        release_date={randomMovie.release_date}
+        release_date={new Date(randomMovie.release_date).getFullYear()}
         overview={randomMovie.overview}
         changeDetailsStatus={this.changeDetailsStatus}
         saveMovieID={this.saveMovieID}
@@ -128,7 +128,7 @@ class SearchMovies extends Component {
             posterPath={movieToDetail.poster_path}
             voteCount={movieToDetail.vote_count}
             voteAverage={movieToDetail.vote_average}
-            releaseDate={movieToDetail.release_date}
+            releaseYear={new Date(movieToDetail.release_date).getFullYear()}
             overview={movieToDetail.overview}
             changeDetailsStatus={this.changeDetailsStatus}
           />

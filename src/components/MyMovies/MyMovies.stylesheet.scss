@@ -1,0 +1,67 @@
+.Wrapper {
+  margin: 20px auto;
+  width: 80vw;
+  font-size: 0.857em;
+}
+
+.tableHead {
+  text-align: center;
+}
+
+.tableRow {
+  font-size: 1.2em;
+  text-align: center;
+}
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.movieTitle {
+  order: 1;
+  font-weight: 800;
+  margin-bottom: 1em;
+}
+
+.movieImage {
+  order: 2;
+  text-align: center;
+}
+
+.movieGenre {
+
+}
+
+.movieCast {
+
+}
+
+.movieCastList {
+  list-style-type: none;
+  text-align: left;
+  padding-left: 1em;
+}
+
+.movieCastItem {
+  padding-bottom: 5px;
+}
+
+.movieRating {
+
+}
+
+.movieVotes {
+
+}
+
+.movieDate {
+
+}
+
+.movieDetails {
+
+}
+
+.movieDelete {
+
+}

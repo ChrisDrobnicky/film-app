@@ -42,8 +42,9 @@ class MovieRow extends Component {
       genres: this.state.genres,
       rating: this.props.voteAverage,
       votes: this.props.voteCount,
-      releaseYear: (new Date(this.props.releaseDate)).getFullYear(),
-      runtime: this.state.runtime
+      releaseYear: this.props.releaseYear,
+      runtime: this.state.runtime,
+      overview: this.props.overview
     };
     let myMovieID = this.props.id;
     isMovieChecked ? saveMyMovie(myMovie) : deleteMyMovie(myMovieID);
@@ -55,8 +56,7 @@ class MovieRow extends Component {
     const genreToDisplay = this.state.genres.map((genre, index) => {
       return index === this.state.genres.length - 1 ? genre : `${genre}, `;
     });
-    const releaseDate = this.props.releaseDate;
-    const releaseYear = (new Date(releaseDate)).getFullYear();
+    const releaseYear = this.props.releaseYear;
 
     return (
       <tr
@@ -64,7 +64,7 @@ class MovieRow extends Component {
         id={this.props.id}
         className={styles.tableRow}>
         <td className="collapsing">
-          <div className="ui fitted slider checkbox">
+          <div className="ui toggle checkbox">
             <input
               type="checkbox"
               onChange={this.handleInputChange}
