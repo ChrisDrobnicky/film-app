@@ -63,7 +63,7 @@ class MovieRow extends Component {
       return movie.id === movieID
       }
     );
-    return !!myMovie ? true : false;
+    return !!myMovie;
   }
 
   render() {
