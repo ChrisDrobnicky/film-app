@@ -63,16 +63,22 @@ class MovieRow extends Component {
         key={this.props.id}
         id={this.props.id}
         className={styles.tableRow}>
-        <td className="collapsing">
-          <div className="ui toggle checkbox">
-            <input
-              type="checkbox"
-              onChange={this.handleInputChange}
-              id={this.props.id}
-            />
-            <label htmlFor={this.props.id}></label>
-          </div>
-        </td>
+        {
+          !this.props.isMyMovieTab ? (
+            <td className="collapsing">
+              <div className="ui toggle checkbox">
+                <input
+                  type="checkbox"
+                  onChange={this.handleInputChange}
+                  id={this.props.id}
+                />
+                <label htmlFor={this.props.id}></label>
+              </div>
+            </td>
+          ) : (
+            null
+          )
+        }
         <td className={styles.titleWrapper}>
           <span className={styles.movieTitle}> {this.props.title} </span>
           <span className={styles.movieImage}>
@@ -95,6 +101,20 @@ class MovieRow extends Component {
           >Show details
           </button>
         </td>
+        {
+          this.props.isMyMovieTab ? (
+            <td className={styles.movieDelete}>
+              <button
+                className="ui small red button"
+                onClick={() => this.props.handleDeleteClick(this.props.id)}
+              >Delete
+              </button>
+            </td>
+
+          ) : (
+            null
+          )
+        }
       </tr>
     )
   }
