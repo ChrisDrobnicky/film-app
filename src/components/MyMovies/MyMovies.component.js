@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styles from './MyMovies.stylesheet.css';
-import config from '../../config';
 import {getMyMovies, deleteMyMovie} from '../../services/services';
 import MovieDetails from '../MovieDetails/MovieDetails.component';
 import MovieRow from '../MovieRow/MovieRow.component';
@@ -54,8 +53,6 @@ class MyMovies extends Component {
   }
 
   render() {
-    const imageBaseURL = config.imageBaseURL;
-    const imageSmall = config.imageSmall;
     const movieToDetail  = this.getMovieToDetail(this.state.detailedMovieID);
 
     return(
@@ -86,8 +83,6 @@ class MyMovies extends Component {
                     voteAverage={movie.rating}
                     voteCount={movie.votes}
                     releaseYear={movie.releaseYear}
-                    genres={(movie.genres).join(', ')}
-                    runtime={movie.runtime}
                     changeDetailsStatus={this.changeDetailsStatus}
                     saveMovieID={this.saveMovieID}
                     isMyMovieTab={true}

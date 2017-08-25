@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import styles from './MovieRow.stylesheet.css';
 import config from '../../config';
-import {getMovieDetails, saveMyMovie, deleteMyMovie} from '../../services/services';
+import {getMovieDetails, saveMyMovie, deleteMyMovie, getMyMovies} from '../../services/services';
 
 class MovieRow extends Component {
   constructor() {
     super();
     this.handleDetailsClick = this.handleDetailsClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.isMovieInMyMovies = this.isMovieInMyMovies.bind(this);
 
     this.state = {
       genres: [],
       runtime: '',
+      isMovieInMyMovies: false
     }
   }
 
@@ -21,9 +23,11 @@ class MovieRow extends Component {
         return genre.name;
       });
       const runtime = res.data.runtime;
+      const checkMyMovies = this.isMovieInMyMovies(this.props.id);
       this.setState({
         genres,
         runtime,
+        isMovieInMyMovies: checkMyMovies
       })
     })
   }
@@ -48,6 +52,18 @@ class MovieRow extends Component {
     };
     let myMovieID = this.props.id;
     isMovieChecked ? saveMyMovie(myMovie) : deleteMyMovie(myMovieID);
+    this.setState( (prevState) => {
+      return {isMovieInMyMovies: !prevState.isMovieInMyMovies }
+    })
+  }
+
+  isMovieInMyMovies(movieID) {
+    let myMovies = getMyMovies();
+    let myMovie = myMovies.find( (movie) => {
+      return movie.id === movieID
+      }
+    );
+    return !!myMovie ? true : false;
   }
 
   render() {
@@ -64,20 +80,18 @@ class MovieRow extends Component {
         id={this.props.id}
         className={styles.tableRow}>
         {
-          !this.props.isMyMovieTab ? (
+          !this.props.isMyMovieTab &&
             <td className="collapsing">
               <div className="ui toggle checkbox">
                 <input
                   type="checkbox"
                   onChange={this.handleInputChange}
                   id={this.props.id}
+                  checked={this.state.isMovieInMyMovies}
                 />
                 <label htmlFor={this.props.id}></label>
               </div>
             </td>
-          ) : (
-            null
-          )
         }
         <td className={styles.titleWrapper}>
           <span className={styles.movieTitle}> {this.props.title} </span>
@@ -93,7 +107,7 @@ class MovieRow extends Component {
         <td className={styles.movieRating}>{this.props.voteAverage}</td>
         <td className={styles.movieVotes}>{this.props.voteCount}</td>
         <td className={styles.movieDate}>{releaseYear}</td>
-        <td className={styles.movieRuntime}>{this.state.runtime}</td>
+        <td className={styles.movieRuntime}>{ this.state.runtime }</td>
         <td className={styles.movieDetails}>
           <button
             className="ui small teal button"
@@ -102,7 +116,7 @@ class MovieRow extends Component {
           </button>
         </td>
         {
-          this.props.isMyMovieTab ? (
+          this.props.isMyMovieTab &&
             <td className={styles.movieDelete}>
               <button
                 className="ui small red button"
@@ -110,10 +124,6 @@ class MovieRow extends Component {
               >Delete
               </button>
             </td>
-
-          ) : (
-            null
-          )
         }
       </tr>
     )
