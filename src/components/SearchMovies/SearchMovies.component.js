@@ -71,7 +71,7 @@ class SearchMovies extends Component {
       <table className={`ui compact celled table`}>
         <thead className={styles.tableHead}>
         <tr>
-          <th>Add </th>
+          <th>Add</th>
           <th>Title</th>
           <th>Genres</th>
           <th>Rating</th>
@@ -103,10 +103,10 @@ class SearchMovies extends Component {
         id={randomMovie.id}
         key={randomMovie.id}
         title={randomMovie.title}
-        poster_path={randomMovie.poster_path}
-        vote_count={randomMovie.vote_count}
-        vote_average={randomMovie.vote_average}
-        release_date={new Date(randomMovie.release_date).getFullYear()}
+        posterPath={randomMovie.poster_path}
+        voteCount={randomMovie.vote_count}
+        voteAverage={randomMovie.vote_average}
+        releaseYear={new Date(randomMovie.release_date).getFullYear()}
         overview={randomMovie.overview}
         changeDetailsStatus={this.changeDetailsStatus}
         saveMovieID={this.saveMovieID}

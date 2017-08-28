@@ -81,13 +81,14 @@ class MovieRow extends Component {
         className={styles.tableRow}>
         {
           !this.props.isMyMovieTab &&
-            <td className="collapsing">
-              <div className="ui toggle checkbox">
+            <td className={`collapsing ${styles.addWrapper}`}>
+              <div className="ui slider checkbox">
                 <input
                   type="checkbox"
                   onChange={this.handleInputChange}
                   id={this.props.id}
                   checked={this.state.isMovieInMyMovies}
+                  title={this.state.isMovieInMyMovies ? 'Remove from My Movies' : 'Add to My Movies'}
                 />
                 <label htmlFor={this.props.id}></label>
               </div>

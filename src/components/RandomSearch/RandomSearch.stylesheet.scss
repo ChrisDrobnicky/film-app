@@ -1,3 +1,21 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.mainContent {
+  cursor: pointer;
+}
+
+.titleWrapper {
+  text-align: center;
+}
+
+.dateWrapper {
+  text-align: center;
+}
+
 .imageWrapper {
   text-align: center;
 }
@@ -10,6 +28,16 @@
 .rating {
   order: 1;
 }
+
 .runtime {
   order: 2;
+}
+
+.myMovies {
+  cursor: pointer;
+  order: 3;
+}
+
+.movieGenre {
+  font-weight: 300;
 }

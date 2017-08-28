@@ -220,6 +220,7 @@ class FilterMovies extends Component {
           <button
             className="info ui tiny button"
             onClick={() => this.handleSearchClick(true)}
+            title="Just pick one movie for me based on filters"
           >
             Random Search
           </button>
