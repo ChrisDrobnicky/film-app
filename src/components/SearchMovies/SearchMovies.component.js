@@ -18,6 +18,7 @@ class SearchMovies extends Component {
 
     this.state = {
       movies: [],
+      randomMovie: [],
       isComponentLoading: true,
       isRandomMode: false,
       isDetailsMode: false,
@@ -42,8 +43,11 @@ class SearchMovies extends Component {
     )
   }
 
-  changeRandomStatus(status) {
-    this.setState({ isRandomMode: status })
+  changeRandomStatus(isRandom) {
+    this.setState({ isRandomMode: isRandom });
+    const allMovies = this.state.movies;
+    const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
+    !!isRandom && this.setState({ randomMovie });
   }
 
   changeDetailsStatus(status) {
@@ -51,6 +55,7 @@ class SearchMovies extends Component {
   }
 
   saveMovieID(movieID) {
+    debugger;
     this.setState({ detailedMovieID: movieID });
   }
 
@@ -61,8 +66,6 @@ class SearchMovies extends Component {
   }
 
   render() {
-    const allMovies = this.state.movies;
-    const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
     const movieToDetail  = this.getMovieToDetail(this.state.detailedMovieID);
     let resultsComponent = !this.state.isRandomMode ? (
       <table className={`ui compact celled table`}>
@@ -97,14 +100,14 @@ class SearchMovies extends Component {
       </table>
     ) : (
       <RandomSearch
-        id={randomMovie.id}
-        key={randomMovie.id}
-        title={randomMovie.title}
-        posterPath={randomMovie.poster_path}
-        voteCount={randomMovie.vote_count}
-        voteAverage={randomMovie.vote_average}
-        releaseYear={new Date(randomMovie.release_date).getFullYear()}
-        overview={randomMovie.overview}
+        id={this.state.randomMovie.id}
+        key={this.state.randomMovie.id}
+        title={this.state.randomMovie.title}
+        posterPath={this.state.randomMovie.poster_path}
+        voteCount={this.state.randomMovie.vote_count}
+        voteAverage={this.state.randomMovie.vote_average}
+        releaseYear={new Date(this.state.randomMovie.release_date).getFullYear()}
+        overview={this.state.randomMovie.overview}
         changeDetailsStatus={this.changeDetailsStatus}
         saveMovieID={this.saveMovieID}
       />

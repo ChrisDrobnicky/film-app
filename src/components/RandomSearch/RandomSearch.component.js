@@ -32,8 +32,8 @@ class RandomSearch extends Component {
   }
 
   handleDetailsClick(status, movieID) {
+    this.props.saveMovieID(movieID);
     this.props.changeDetailsStatus(status);
-    this.props.saveMovieID(movieID)
   }
 
   handleMyMoviesClick() {
