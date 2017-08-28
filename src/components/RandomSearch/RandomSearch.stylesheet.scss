@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 1em;
+  animation: zoomIn 1s;
 }
 
 .mainContent {
@@ -40,4 +41,15 @@
 
 .movieGenre {
   font-weight: 300;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity:1;
+  }
 }

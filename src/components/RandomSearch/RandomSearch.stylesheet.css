@@ -1,7 +1,8 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 1em; }
+  margin-top: 1em;
+  animation: zoomIn 1s; }
 
 .mainContent {
   cursor: pointer; }
@@ -31,5 +32,12 @@
 
 .movieGenre {
   font-weight: 300; }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
 
 /*# sourceMappingURL=RandomSearch.stylesheet.css.map */

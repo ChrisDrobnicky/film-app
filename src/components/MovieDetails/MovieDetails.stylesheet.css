@@ -81,4 +81,13 @@
   right: 0.85em;
   cursor: pointer; }
 
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+.zoomIn {
+  animation: zoomIn 1s; }
+
 /*# sourceMappingURL=MovieDetails.stylesheet.css.map */

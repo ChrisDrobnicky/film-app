@@ -58,7 +58,7 @@ class MovieDetails extends Component {
 
     return(
       <div className={styles.Wrapper}>
-        <div className="ui active modal" style={{top: "10%"}}>
+        <div className={`${styles.zoomIn} ui active modal`} style={{top: "10%"}}>
           <div className="header">
             <div className={styles.modalHeader}>
               <p className={styles.title}>{this.props.title} <span className={styles.year}>({releaseYear})</span></p>

@@ -67,6 +67,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .overviewWrapper {
   order: 1;
 }
@@ -106,4 +107,19 @@
   top: 1em;
   right: 0.85em;
   cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity:1;
+  }
+}
+
+.zoomIn {
+  animation: zoomIn 1s;
 }
