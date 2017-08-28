@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 
 import styles from './SearchMovies.stylesheet.css';
-import {getThisYearMovies} from '../../services/services';
-import {filterMovies} from '../../services/services';
-
-
+import {getThisYearMovies, filterMovies} from '../../services/services';
 import MovieRow from '../MovieRow/MovieRow.component';
 import FilterMovies from '../FilterMovies/FilterMovies.component';
 import RandomSearch from '../RandomSearch/RandomSearch.component';
@@ -54,7 +51,7 @@ class SearchMovies extends Component {
   }
 
   saveMovieID(movieID) {
-    this.setState( {detailedMovieID: movieID });
+    this.setState({ detailedMovieID: movieID });
   }
 
   getMovieToDetail(movieID) {

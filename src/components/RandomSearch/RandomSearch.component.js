@@ -22,11 +22,11 @@ class RandomSearch extends Component {
         return genre.name;
       });
       const runtime = res.data.runtime;
-      const checkMyMovies = this.isMovieInMyMovies(this.props.id);
+      const isMovieInMyMovies = this.isMovieInMyMovies(this.props.id);
       this.setState({
         genres,
         runtime,
-        isMovieInMyMovies: checkMyMovies
+        isMovieInMyMovies
       })
     })
   }
@@ -100,11 +100,11 @@ class RandomSearch extends Component {
           <div className="content">
             <div className={styles.contentWrapper}>
               <span className={styles.rating}>
-                <i className="yellow star large icon"></i>
+                <i className="yellow star large icon"/>
                 {this.props.voteAverage}/10 ({this.props.voteCount} votes)
               </span>
               <span className={styles.runtime}>
-                <i className="hourglass empty large icon"></i>
+                <i className="hourglass empty large icon"/>
                 {runtimeHours}h {runtimeMinutes}min
               </span>
               <span
@@ -113,7 +113,7 @@ class RandomSearch extends Component {
                   className={this.state.isMovieInMyMovies ? 'large red heart icon' : 'large red empty heart icon'}
                   title={this.state.isMovieInMyMovies ? 'Remove from My Movies' : 'Add to My Movies'}
                   onClick={this.handleMyMoviesClick}
-                ></i>
+                />
               </span>
             </div>
           </div>
