@@ -55,7 +55,6 @@ class SearchMovies extends Component {
   }
 
   saveMovieID(movieID) {
-    debugger;
     this.setState({ detailedMovieID: movieID });
   }
 
