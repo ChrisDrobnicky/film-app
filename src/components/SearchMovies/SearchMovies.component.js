@@ -11,14 +11,14 @@ class SearchMovies extends Component {
   constructor() {
     super();
     this.updateMovies = this.updateMovies.bind(this);
-    this.changeRandomStatus = this.changeRandomStatus.bind(this);
     this.changeDetailsStatus = this.changeDetailsStatus.bind(this);
     this.getMovieToDetail = this.getMovieToDetail.bind(this);
     this.saveMovieID = this.saveMovieID.bind(this);
 
     this.state = {
       movies: [],
-      randomMovie: [],
+      randomMovie: {},
+      detailedMovie: {},
       isComponentLoading: true,
       isRandomMode: false,
       isDetailsMode: false,
@@ -34,20 +34,15 @@ class SearchMovies extends Component {
     }));
   }
 
-  updateMovies(filters) {
+  updateMovies(filters, isRandomMode) {
     this.setState({ isComponentLoading: true });
     filterMovies(filters).then(res => this.setState({
-        movies: res.data.results,
-        isComponentLoading: false
+      movies: res.data.results,
+      isComponentLoading: false,
+      isRandomMode,
+      randomMovie: res.data.results[Math.floor(Math.random() * res.data.results.length)]
       })
     )
-  }
-
-  changeRandomStatus(isRandom) {
-    this.setState({ isRandomMode: isRandom });
-    const allMovies = this.state.movies;
-    const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
-    !!isRandom && this.setState({ randomMovie });
   }
 
   changeDetailsStatus(status) {
@@ -55,7 +50,10 @@ class SearchMovies extends Component {
   }
 
   saveMovieID(movieID) {
-    this.setState({ detailedMovieID: movieID });
+    this.setState({
+      detailedMovie: this.getMovieToDetail(movieID),
+      isDetailsMode: true
+    });
   }
 
   getMovieToDetail(movieID) {
@@ -65,7 +63,7 @@ class SearchMovies extends Component {
   }
 
   render() {
-    const movieToDetail  = this.getMovieToDetail(this.state.detailedMovieID);
+    const movieToDetail  = this.state.detailedMovie;
     let resultsComponent = !this.state.isRandomMode ? (
       <table className={`ui compact celled table`}>
         <thead className={styles.tableHead}>
@@ -118,19 +116,21 @@ class SearchMovies extends Component {
           changeRandomStatus={this.changeRandomStatus}
         />
         {
-          !this.state.isDetailsMode ?
-            this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent
-            : <MovieDetails
-            id={movieToDetail.id}
-            key={movieToDetail.id}
-            title={movieToDetail.title}
-            posterPath={movieToDetail.poster_path}
-            voteCount={movieToDetail.vote_count}
-            voteAverage={movieToDetail.vote_average}
-            releaseYear={new Date(movieToDetail.release_date).getFullYear()}
-            overview={movieToDetail.overview}
-            changeDetailsStatus={this.changeDetailsStatus}
-          />
+          this.state.isComponentLoading ?
+            <span>Loading...</span>
+            : !this.state.isDetailsMode ?
+                resultsComponent
+                : <MovieDetails
+                    id={movieToDetail.id}
+                    key={movieToDetail.id}
+                    title={movieToDetail.title}
+                    posterPath={movieToDetail.poster_path}
+                    voteCount={movieToDetail.vote_count}
+                    voteAverage={movieToDetail.vote_average}
+                    releaseYear={new Date(movieToDetail.release_date).getFullYear()}
+                    overview={movieToDetail.overview}
+                    changeDetailsStatus={this.changeDetailsStatus}
+                  />
         }
       </div>
     )

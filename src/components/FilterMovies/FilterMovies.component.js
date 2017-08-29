@@ -85,8 +85,7 @@ class FilterMovies extends Component {
   }
 
   handleSearchClick(status) {
-    this.props.changeRandomStatus(status);
-    this.props.updateMovies(omit(this.state, 'genresOptions'));
+    this.props.updateMovies(omit(this.state, 'genresOptions'), status);
   }
 
   generateGenresOptions() {
