@@ -78,7 +78,7 @@ class RandomSearch extends Component {
         <div className="ui card">
           <div
             className={`content ${styles.mainContent}`}
-            onClick={(status, movieID) => this.handleDetailsClick(true, this.props.id)}
+            onClick={() => this.handleDetailsClick(this.props.id)}
             title="Show movie details"
           >
             <div className={styles.titleWrapper}>
