@@ -6,7 +6,7 @@ import {
 
 import Header from '../Header/Header.component';
 import SearchMovies from '../SearchMovies/SearchMovies.component';
-import YourMovies from '../YourMovies/YourMovies.component';
+import MyMovies from '../MyMovies/MyMovies.component';
 import About from '../About/About.component';
 import Footer from '../Footer/Footer.component';
 import styles from './App.stylesheet.css';
@@ -18,7 +18,7 @@ class App extends Component {
         <div className={styles.App}>
           <Header />
           <Route exact path="/" component={SearchMovies}/>
-          <Route path="/your-movies" component={YourMovies} />
+          <Route path="/my-movies" component={MyMovies} />
           <Route path="/about" component={About} />
           <Footer />
         </div>

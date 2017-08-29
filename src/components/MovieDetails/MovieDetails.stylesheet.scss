@@ -59,27 +59,35 @@
 .imageWrapper {
   order: 1;
   margin: 0.5em 0.5em 1.2em 0.5em;
-  flex-basis: 0;
+}
+
+.descriptionWrapper {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .overviewWrapper {
-  order: 2;
-  flex-basis: 0;
-  flex-grow: 1;
+  order: 1;
 }
 
-.castWrapper {
-  order: 3;
-  flex-basis: 0;
-  flex-grow: 1;
+.overviewHeader {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
 }
 
 .overview {
-  padding-top: 0.5em;
+
+}
+
+.castWrapper {
+  order: 2;
 }
 
 .castHeader {
   font-size: 1.2em;
+  margin-bottom: 0.5em;
 }
 
 .castList {
@@ -99,4 +107,19 @@
   top: 1em;
   right: 0.85em;
   cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity:1;
+  }
+}
+
+.zoomIn {
+  animation: zoomIn 1s;
 }

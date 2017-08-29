@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 
 import styles from './SearchMovies.stylesheet.css';
-import {getThisYearMovies} from '../../services/services';
-import {filterMovies} from '../../services/services';
+import {getThisYearMovies, filterMovies} from '../../services/services';
 import MovieRow from '../MovieRow/MovieRow.component';
 import FilterMovies from '../FilterMovies/FilterMovies.component';
 import RandomSearch from '../RandomSearch/RandomSearch.component';
@@ -12,17 +11,18 @@ class SearchMovies extends Component {
   constructor() {
     super();
     this.updateMovies = this.updateMovies.bind(this);
-    this.changeRandomStatus = this.changeRandomStatus.bind(this);
     this.changeDetailsStatus = this.changeDetailsStatus.bind(this);
-    this.getClickedMovie = this.getClickedMovie.bind(this);
+    this.getMovieToDetail = this.getMovieToDetail.bind(this);
     this.saveMovieID = this.saveMovieID.bind(this);
 
     this.state = {
       movies: [],
+      randomMovie: {},
+      detailedMovie: {},
       isComponentLoading: true,
       isRandomMode: false,
       isDetailsMode: false,
-      clickedMovieID: ''
+      detailedMovieID: ''
     }
   }
 
@@ -34,17 +34,15 @@ class SearchMovies extends Component {
     }));
   }
 
-  updateMovies(filters) {
+  updateMovies(filters, isRandomMode) {
     this.setState({ isComponentLoading: true });
     filterMovies(filters).then(res => this.setState({
       movies: res.data.results,
-      isComponentLoading: false
-    })
+      isComponentLoading: false,
+      isRandomMode,
+      randomMovie: res.data.results[Math.floor(Math.random() * res.data.results.length)]
+      })
     )
-  }
-
-  changeRandomStatus(status) {
-    this.setState({ isRandomMode: status })
   }
 
   changeDetailsStatus(status) {
@@ -52,32 +50,33 @@ class SearchMovies extends Component {
   }
 
   saveMovieID(movieID) {
-    this.setState( {clickedMovieID: movieID });
+    this.setState({
+      detailedMovie: this.getMovieToDetail(movieID),
+      isDetailsMode: true
+    });
   }
 
-  getClickedMovie(movieID) {
+  getMovieToDetail(movieID) {
     return this.state.movies.find(movie => {
       return movie.id === movieID;
     });
   }
 
   render() {
-    const allMovies = this.state.movies;
-    const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
-    const clickedMovie  = this.getClickedMovie(this.state.clickedMovieID);
+    const movieToDetail  = this.state.detailedMovie;
     let resultsComponent = !this.state.isRandomMode ? (
-      <table className={`ui compact celled definition table`}>
+      <table className={`ui compact celled table`}>
         <thead className={styles.tableHead}>
-          <tr>
-            <th>Add </th>
-            <th>Title</th>
-            <th>Genres</th>
-            <th>Rating</th>
-            <th>Votes</th>
-            <th>Release Year</th>
-            <th>Runtime (minutes)</th>
-            <th>Details</th>
-          </tr>
+        <tr>
+          <th>Add</th>
+          <th>Title</th>
+          <th>Genres</th>
+          <th>Rating</th>
+          <th>Votes</th>
+          <th>Release Year</th>
+          <th>Runtime (minutes)</th>
+          <th>Details</th>
+        </tr>
         </thead>
         <tbody>
         {this.state.movies.map(movie =>
@@ -85,10 +84,11 @@ class SearchMovies extends Component {
             id={movie.id}
             key={movie.id}
             title={movie.title}
-            poster_path={movie.poster_path}
-            vote_count={movie.vote_count}
-            vote_average={movie.vote_average}
-            release_date={movie.release_date}
+            posterPath={movie.poster_path}
+            voteCount={movie.vote_count}
+            voteAverage={movie.vote_average}
+            releaseYear={new Date(movie.release_date).getFullYear()}
+            overview={movie.overview}
             changeDetailsStatus={this.changeDetailsStatus}
             saveMovieID={this.saveMovieID}
           />
@@ -96,18 +96,18 @@ class SearchMovies extends Component {
         </tbody>
       </table>
     ) : (
-        <RandomSearch
-          id={randomMovie.id}
-          key={randomMovie.id}
-          title={randomMovie.title}
-          poster_path={randomMovie.poster_path}
-          vote_count={randomMovie.vote_count}
-          vote_average={randomMovie.vote_average}
-          release_date={randomMovie.release_date}
-          overview={randomMovie.overview}
-          changeDetailsStatus={this.changeDetailsStatus}
-          saveMovieID={this.saveMovieID}
-        />
+      <RandomSearch
+        id={this.state.randomMovie.id}
+        key={this.state.randomMovie.id}
+        title={this.state.randomMovie.title}
+        posterPath={this.state.randomMovie.poster_path}
+        voteCount={this.state.randomMovie.vote_count}
+        voteAverage={this.state.randomMovie.vote_average}
+        releaseYear={new Date(this.state.randomMovie.release_date).getFullYear()}
+        overview={this.state.randomMovie.overview}
+        changeDetailsStatus={this.changeDetailsStatus}
+        saveMovieID={this.saveMovieID}
+      />
     );
     return(
       <div className={styles.Wrapper}>
@@ -116,19 +116,21 @@ class SearchMovies extends Component {
           changeRandomStatus={this.changeRandomStatus}
         />
         {
-          !this.state.isDetailsMode ?
-            this.state.isComponentLoading ? <span>Loading...</span> : resultsComponent
-            : <MovieDetails
-              id={clickedMovie.id}
-              key={clickedMovie.id}
-              title={clickedMovie.title}
-              posterPath={clickedMovie.poster_path}
-              voteCount={clickedMovie.vote_count}
-              voteAverage={clickedMovie.vote_average}
-              releaseDate={clickedMovie.release_date}
-              overview={clickedMovie.overview}
-              changeDetailsStatus={this.changeDetailsStatus}
-              />
+          this.state.isComponentLoading ?
+            <span>Loading...</span>
+            : !this.state.isDetailsMode ?
+                resultsComponent
+                : <MovieDetails
+                    id={movieToDetail.id}
+                    key={movieToDetail.id}
+                    title={movieToDetail.title}
+                    posterPath={movieToDetail.poster_path}
+                    voteCount={movieToDetail.vote_count}
+                    voteAverage={movieToDetail.vote_average}
+                    releaseYear={new Date(movieToDetail.release_date).getFullYear()}
+                    overview={movieToDetail.overview}
+                    changeDetailsStatus={this.changeDetailsStatus}
+                  />
         }
       </div>
     )

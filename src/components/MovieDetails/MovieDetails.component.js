@@ -12,7 +12,7 @@ class MovieDetails extends Component {
     this.state = {
       genres: [],
       runtime: '',
-      cast: []
+      cast: [],
     }
   }
 
@@ -32,7 +32,7 @@ class MovieDetails extends Component {
       this.setState({
         genres,
         runtime,
-        cast
+        cast,
       })
     }))
   }
@@ -52,14 +52,13 @@ class MovieDetails extends Component {
         ? null
         : <li className={styles.castItem} key={actor.id}> {`${actor.name} (as ${actor.character})`} </li>;
     });
-    const releaseDate = this.props.releaseDate;
-    const releaseYear = (new Date(releaseDate)).getFullYear();
+    const releaseYear = this.props.releaseYear;
     const runtimeHours = Math.floor(this.state.runtime / 60);
     const runtimeMinutes = this.state.runtime % 60;
 
     return(
       <div className={styles.Wrapper}>
-        <div className="ui active modal" style={{top: "10%"}}>
+        <div className={`${styles.zoomIn} ui active modal`} style={{top: "10%"}}>
           <div className="header">
             <div className={styles.modalHeader}>
               <p className={styles.title}>{this.props.title} <span className={styles.year}>({releaseYear})</span></p>
@@ -86,12 +85,15 @@ class MovieDetails extends Component {
                   alt="Movie Poster"
                 />
               </div>
-              <div className={`content ${styles.overviewWrapper}`}>
-                <p className={styles.overview}>{this.props.overview}</p>
-              </div>
-              <div className={`content ${styles.castWrapper}`}>
-                <h4 className={styles.castHeader}>Cast:</h4>
-                <ul className={styles.castList}>{castToDisplay}</ul>
+              <div className={styles.descriptionWrapper}>
+                <div className={`content ${styles.overviewWrapper}`}>
+                  <h4 className={styles.overviewHeader}>Overview:</h4>
+                  <p className={styles.overview}>{this.props.overview}</p>
+                </div>
+                <div className={`content ${styles.castWrapper}`}>
+                  <h4 className={styles.castHeader}>Cast:</h4>
+                  <ul className={styles.castList}>{castToDisplay}</ul>
+                </div>
               </div>
             </div>
             <div className={styles.closeWrapper} onClick={() => this.handleBackClick(false)}>

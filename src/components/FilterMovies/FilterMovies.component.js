@@ -85,8 +85,7 @@ class FilterMovies extends Component {
   }
 
   handleSearchClick(status) {
-    this.props.changeRandomStatus(status);
-    this.props.updateMovies(omit(this.state, 'genresOptions'));
+    this.props.updateMovies(omit(this.state, 'genresOptions'), status);
   }
 
   generateGenresOptions() {
@@ -220,6 +219,7 @@ class FilterMovies extends Component {
           <button
             className="info ui tiny button"
             onClick={() => this.handleSearchClick(true)}
+            title="Just pick one movie for me based on filters"
           >
             Random Search
           </button>

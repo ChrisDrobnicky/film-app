@@ -1,9 +1,16 @@
+.Wrapper {
+  margin: 20px auto;
+  width: 80vw;
+  font-size: 0.857em;
+}
+
+.tableHead {
+  text-align: center;
+}
+
 .tableRow {
   font-size: 1.2em;
   text-align: center;
-}
-.addWrapper {
-  background-color: #dedede;
 }
 .titleWrapper {
   display: flex;
@@ -52,5 +59,9 @@
 }
 
 .movieDetails {
+
+}
+
+.movieDelete {
 
 }

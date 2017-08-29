@@ -1,9 +1,14 @@
+.Wrapper {
+  margin: 20px auto;
+  width: 80vw;
+  font-size: 0.857em; }
+
+.tableHead {
+  text-align: center; }
+
 .tableRow {
   font-size: 1.2em;
   text-align: center; }
-
-.addWrapper {
-  background-color: #dedede; }
 
 .titleWrapper {
   display: flex;
@@ -26,4 +31,4 @@
 .movieCastItem {
   padding-bottom: 5px; }
 
-/*# sourceMappingURL=MovieRow.stylesheet.css.map */
+/*# sourceMappingURL=MyMovies.stylesheet.css.map */

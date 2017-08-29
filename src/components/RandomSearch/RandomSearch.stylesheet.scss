@@ -1,3 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  animation: zoomIn 1s;
+}
+
+.mainContent {
+  cursor: pointer;
+}
+
+.titleWrapper {
+  text-align: center;
+}
+
+.dateWrapper {
+  text-align: center;
+}
+
 .imageWrapper {
   text-align: center;
 }
@@ -10,6 +29,27 @@
 .rating {
   order: 1;
 }
+
 .runtime {
   order: 2;
+}
+
+.myMovies {
+  cursor: pointer;
+  order: 3;
+}
+
+.movieGenre {
+  font-weight: 300;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity:1;
+  }
 }

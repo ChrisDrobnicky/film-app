@@ -39,5 +39,29 @@ export const filterMovies = (filters) => {
   return axios.get(basicURL);
 };
 
+export const getMyMovies = () => {
+  let savedMovies = JSON.parse(localStorage.getItem('myMovies'));
+  return savedMovies ? savedMovies : [];
+};
+
+export const saveMyMovie = (myMovie) => {
+  let savedMovies = JSON.parse(localStorage.getItem('myMovies'));
+
+  if (savedMovies) {
+    savedMovies.push(myMovie);
+  } else {
+    savedMovies = [myMovie];
+  }
+  localStorage.setItem('myMovies', JSON.stringify(savedMovies));
+  return savedMovies;
+};
+
+export const deleteMyMovie = movieID => {
+  const savedMovies = getMyMovies();
+  const updatedMovies = savedMovies.filter(movie => movie.id !== movieID);
+  localStorage.setItem('myMovies', JSON.stringify(updatedMovies));
+  return updatedMovies;
+};
+
 export const getMovieDetails = (id) => axios.get(`${apiURL}/movie/${id}?api_key=${apiKey}&language=en-US`);
 export const getMovieCast = (id) => axios.get(`${apiURL}/movie/${id}/credits?api_key=${apiKey}`);
