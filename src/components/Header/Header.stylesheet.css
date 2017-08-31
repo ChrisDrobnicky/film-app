@@ -29,9 +29,9 @@
   .navLink:hover {
     color: #005b5b; }
 
-@media only screen and (max-width: 1368px) {
+@media only screen and (max-width: 1200px) {
   .navList {
-    width: 50vw; } }
+    width: 45vw; } }
 @media only screen and (max-width: 768px) {
   .navWrapper {
     padding-left: 0.35em;
