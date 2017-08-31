@@ -7,37 +7,165 @@
 .navWrapper {
   display: flex;
   align-items: center;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
   justify-content: space-between;
 }
 
 .appHeading {
-  padding: 10px;
+  padding: 0.8em;
   margin-bottom: 0;
   font-size: 1.285714rem;
 }
 
 .navList {
   display: flex;
-  padding-right: 10px;
+  padding-right: 0.8em;
   justify-content: space-between;
   list-style-type: none;
   width: 30vw;
 }
 
 .navLinkName {
-  padding-right: 10px;
+
 }
 
 .navListItem {
+
 }
 
 .navLink {
   text-decoration: none;
-  color: darkcyan;
+  color: teal;
   transition: all .5s ease;
   &:hover {
-    color: darkblue;
+    color: #005b5b;
+  }
+}
+
+@media only screen and (max-width: 1368px) {
+  .Header {
+
+  }
+
+  .navWrapper {
+
+  }
+
+  .appHeading {
+
+  }
+
+  .navList {
+    width: 50vw; //yes
+  }
+
+  .navLinkName {
+  }
+
+  .navListItem {
+
+  }
+
+  .navLink {
+
+
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .Header {
+
+  }
+
+  .navWrapper {
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+  }
+
+  .appHeading {
+
+  }
+
+  .navList {
+    width: 35vw;
+    margin: 0.5em 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .navLinkName {
+
+  }
+
+  .navListItem {
+    margin: 0.5em 0.2em;
+  }
+
+  .navLink {
+
+  }
+}
+
+
+@media only screen and (max-width: 570px) {
+  .Header {
+    font-size: 1.14285rem;
+  }
+
+  .navWrapper {
+    justify-content: space-around;
+  }
+
+  .appHeading {
+
+  }
+
+  .navList {
+    width: 40vw;
+  }
+
+  .navLinkName {
+
+  }
+
+  .navListItem {
+    margin: 0.3em 0;
+  }
+
+  .navLink {
+
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .Header {
+    font-size: 1em;
+  }
+
+  .navWrapper {
+
+  }
+
+  .appHeading {
+    padding: 0.4em;
+  }
+
+  .navList {
+    width: 47vw;
+
+  }
+
+  .navLinkName {
+
+  }
+
+  .navListItem {
+    margin: 0.2em 0;
+  }
+
+  .navLink {
+
   }
 }

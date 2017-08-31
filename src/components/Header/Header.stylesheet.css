@@ -6,30 +6,69 @@
 .navWrapper {
   display: flex;
   align-items: center;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
   justify-content: space-between; }
 
 .appHeading {
-  padding: 10px;
+  padding: 0.8em;
   margin-bottom: 0;
   font-size: 1.285714rem; }
 
 .navList {
   display: flex;
-  padding-right: 10px;
+  padding-right: 0.8em;
   justify-content: space-between;
   list-style-type: none;
   width: 30vw; }
 
-.navLinkName {
-  padding-right: 10px; }
-
 .navLink {
   text-decoration: none;
-  color: darkcyan;
+  color: teal;
   transition: all .5s ease; }
   .navLink:hover {
-    color: darkblue; }
+    color: #005b5b; }
+
+@media only screen and (max-width: 1368px) {
+  .navList {
+    width: 50vw; } }
+@media only screen and (max-width: 768px) {
+  .navWrapper {
+    padding-left: 0.35em;
+    padding-right: 0.35em; }
+
+  .navList {
+    width: 35vw;
+    margin: 0.5em 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-end; }
+
+  .navListItem {
+    margin: 0.5em 0.2em; } }
+@media only screen and (max-width: 570px) {
+  .Header {
+    font-size: 1.14285rem; }
+
+  .navWrapper {
+    justify-content: space-around; }
+
+  .navList {
+    width: 40vw; }
+
+  .navListItem {
+    margin: 0.3em 0; } }
+@media only screen and (max-width: 420px) {
+  .Header {
+    font-size: 1em; }
+
+  .appHeading {
+    padding: 0.4em; }
+
+  .navList {
+    width: 47vw; }
+
+  .navListItem {
+    margin: 0.2em 0; } }
 
 /*# sourceMappingURL=Header.stylesheet.css.map */

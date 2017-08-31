@@ -8,8 +8,10 @@ const Header = () => (
     <nav className={styles.navWrapper}>
       <h3 className={styles.appHeading}>
         <Link to="/" replace className={styles.navLink}>
-          <span className={styles.navLinkName}>Movie Picker</span>
-          <i className="film icon"> </i>
+          <span className={styles.navLinkName}>
+            Movie Picker
+            <i className="film icon"/>
+          </span>
         </Link>
       </h3>
       <ul className={styles.navList}>

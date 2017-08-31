@@ -65,7 +65,7 @@ class SearchMovies extends Component {
   render() {
     const movieToDetail  = this.state.detailedMovie;
     let resultsComponent = !this.state.isRandomMode ? (
-      <table className={`ui compact celled table`}>
+      <table className={`ui compact celled tablet stackable table`}>
         <thead className={styles.tableHead}>
         <tr>
           <th>Add</th>
