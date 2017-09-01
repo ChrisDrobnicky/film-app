@@ -15,9 +15,6 @@
     font-size: 0.8758em; } }
 @media only screen and (max-width: 570px) {
   .Wrapper {
-    width: 100vw; }
-
-  .buttonTitle {
-    font-size: 0.857em; } }
+    width: 100vw; } }
 
 /*# sourceMappingURL=FilterMovies.stylesheet.css.map */

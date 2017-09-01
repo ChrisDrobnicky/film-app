@@ -115,10 +115,10 @@ class FilterMovies extends Component {
     return(
       <div className={`ui compact form ${styles.Wrapper}`}>
         <fieldset className="field">
-          <legend className="ui red ribbon large label">Set filters:</legend>
+          <legend className="ui brown ribbon big label">Set filters:</legend>
           <div className="two fields">
             <fieldset className="field">
-              <legend className="ui teal horizontal label">
+              <legend className="ui brown horizontal label">
                 <i className="hashtag large icon"></i>
                 Genres
               </legend>
@@ -132,7 +132,7 @@ class FilterMovies extends Component {
               />
             </fieldset>
             <fieldset className="field">
-              <legend className="ui teal horizontal label">
+              <legend className="ui brown horizontal label">
                 <i className="calendar outline large icon"></i>
                 Release Year
               </legend>
@@ -160,7 +160,7 @@ class FilterMovies extends Component {
           </div>
           <div className="three fields">
             <fieldset className="field">
-              <legend className="ui teal horizontal label">
+              <legend className="ui brown horizontal label">
                 <i className="empty star large icon"></i>
                 Rating
               </legend>
@@ -186,7 +186,7 @@ class FilterMovies extends Component {
               </select>
             </fieldset>
             <fieldset className="field">
-              <legend className="ui teal horizontal label">
+              <legend className="ui brown horizontal label">
                 <i className="users large icon"></i>
                 Votes
               </legend>
@@ -202,7 +202,7 @@ class FilterMovies extends Component {
               </select>
             </fieldset>
             <fieldset className="field">
-              <legend className="ui teal horizontal label">
+              <legend className="ui brown horizontal label">
                 <i className="hourglass empty large icon"></i>
                 Runtime (minutes)
               </legend>
@@ -230,23 +230,20 @@ class FilterMovies extends Component {
             </fieldset>
           </div>
           <div className={styles.searchButtons}>
-            <div className={`ui buttons`}>
-                <button
-                  className="positive ui tiny button"
-                  onClick={() => this.handleSearchClick(false)}
-                >
-                  <span className={styles.buttonTitle}>
-                  Search
-                  </span>
-                </button>
+            <div className={`ui tiny buttons`}>
               <button
-                className="info ui tiny button"
+                className="ui tiny teal button"
+                onClick={() => this.handleSearchClick(false)}
+              >
+                Search
+              </button>
+              <div className="or"></div>
+              <button
+                className="ui tiny grey button"
                 onClick={() => this.handleSearchClick(true)}
                 title="Just pick one movie for me based on filters"
               >
-                <span className={styles.buttonTitle}>
-                  Random Search
-                </span>
+                Random Search
               </button>
             </div>
           </div>
