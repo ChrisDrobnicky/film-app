@@ -18,7 +18,8 @@
 
 .contentWrapper {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  flex-wrap: wrap; }
 
 .rating {
   order: 1; }
@@ -30,8 +31,8 @@
   cursor: pointer;
   order: 3; }
 
-.movieGenre {
-  font-weight: 300; }
+.genres {
+  font-size: 0.7em; }
 
 @keyframes zoomIn {
   from {
