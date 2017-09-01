@@ -40,6 +40,11 @@
 .genresItem {
   font-weight: 300; }
 
+.modalContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
 .modalContent {
   display: flex;
   justify-content: space-between;
@@ -56,7 +61,8 @@
   justify-content: space-between; }
 
 .overviewWrapper {
-  order: 1; }
+  order: 1;
+  margin-bottom: 0.25em; }
 
 .overviewHeader {
   font-size: 1.2em;
@@ -89,5 +95,44 @@
     opacity: 1; } }
 .zoomIn {
   animation: zoomIn 1s; }
+
+@media only screen and (max-width: 570px) {
+  .title {
+    font-size: 0.8571em; }
+
+  .year {
+    font-size: 0.7857em; }
+
+  .average {
+    font-size: 0.6em; }
+
+  .count {
+    font-size: 0.5em; }
+
+  .runtime {
+    font-size: 0.6em; }
+
+  .genres {
+    font-size: 0.6em; }
+
+  .imageWrapper {
+    flex-grow: 2;
+    margin: 0.25em 0.25em 0.6em 0.25em; }
+
+  .descriptionWrapper {
+    font-size: 0.7143em; }
+
+  .overviewHeader {
+    margin-bottom: 0.25em; }
+
+  .castWrapper {
+    order: 2; }
+
+  .castHeader {
+    margin-bottom: 0.25em; }
+
+  .castList {
+    margin-top: 0;
+    padding: 0; } }
 
 /*# sourceMappingURL=MovieDetails.stylesheet.css.map */

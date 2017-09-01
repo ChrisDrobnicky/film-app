@@ -61,7 +61,7 @@ class MovieDetails extends Component {
         <div className={`${styles.zoomIn} ui active modal`} style={{top: "10%"}}>
           <div className="header">
             <div className={styles.modalHeader}>
-              <p className={styles.title}>{this.props.title} <span className={styles.year}>({releaseYear})</span></p>
+              <p className={styles.title}>{this.props.title}<span className={styles.year}> ({releaseYear})</span></p>
               <div className={styles.rating}>
                 <span className={styles.average}>
                   <i className="yellow large star icon"/>
@@ -73,10 +73,15 @@ class MovieDetails extends Component {
                 <i className="hourglass empty large icon"/>
                 {runtimeHours}h {runtimeMinutes}min
               </div>
-              <div className={styles.genres}>Genres: <span className={styles.genresItem}>{genreToDisplay}</span></div>
+              <div className={styles.genres}>
+                <span className={styles.genresItem}>
+                  <i className="large hashtag icon"/>
+                  {genreToDisplay}
+                </span>
+              </div>
             </div>
           </div>
-          <div className={`scrolling content ${styles.modalContent}`}>
+          <div className={`scrolling content ${styles.modalContentWrapper}`}>
             <div className={styles.modalContent}>
               <div className={`image content ${styles.imageWrapper}`}>
                 <img
@@ -86,11 +91,11 @@ class MovieDetails extends Component {
                 />
               </div>
               <div className={styles.descriptionWrapper}>
-                <div className={`content ${styles.overviewWrapper}`}>
+                <div className={`scrolling content ${styles.overviewWrapper}`}>
                   <h4 className={styles.overviewHeader}>Overview:</h4>
                   <p className={styles.overview}>{this.props.overview}</p>
                 </div>
-                <div className={`content ${styles.castWrapper}`}>
+                <div className={`scrolling content ${styles.castWrapper}`}>
                   <h4 className={styles.castHeader}>Cast:</h4>
                   <ul className={styles.castList}>{castToDisplay}</ul>
                 </div>
@@ -100,7 +105,7 @@ class MovieDetails extends Component {
               <i className="window close big teal icon"/>
             </div>
             <div className={styles.cancelButtonWrapper}>
-              <button className="ui cancel large teal button" onClick={() => this.handleBackClick(false)}>Back</button>
+              <button className="ui cancel small teal button" onClick={() => this.handleBackClick(false)}>Back</button>
             </div>
           </div>
         </div>
