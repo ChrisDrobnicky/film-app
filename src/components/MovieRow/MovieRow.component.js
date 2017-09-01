@@ -95,20 +95,43 @@ class MovieRow extends Component {
             </td>
         }
         <td className={styles.titleWrapper}>
-          <span className={styles.movieTitle}> {this.props.title} </span>
+          <div className={styles.movieTitle}> {this.props.title} </div>
           <span className={styles.movieImage}>
             <img src={`${imageBaseURL}${imageSmall}${this.props.posterPath}`} alt="Movie Poster"/>
           </span>
         </td>
         <td className={styles.movieGenre}>
+          <span className={styles.iconWrapper}>
+            <i className="hashtag large icon"></i>
+          </span>
           <span>
             {genreToDisplay}
           </span>
         </td>
-        <td className={styles.movieRating}>{this.props.voteAverage}</td>
-        <td className={styles.movieVotes}>{this.props.voteCount}</td>
-        <td className={styles.movieDate}>{releaseYear}</td>
-        <td className={styles.movieRuntime}>{ this.state.runtime }</td>
+        <td className={styles.movieRating}>
+          <span className={styles.iconWrapper}>
+            <i className="yellow star large icon"></i>
+          </span>
+          {this.props.voteAverage}
+        </td>
+        <td className={styles.movieVotes}>
+          <span className={styles.iconWrapper}>
+            <i className="users large icon"></i>
+          </span>
+          {this.props.voteCount}
+        </td>
+        <td className={styles.movieYear}>
+          <span className={styles.iconWrapper}>
+            <i className="calendar outline large icon"></i>
+          </span>
+          {releaseYear}
+        </td>
+        <td className={styles.movieRuntime}>
+          <span className={styles.iconWrapper}>
+            <i className="hourglass empty large icon"></i>
+          </span>
+          { this.state.runtime }
+        </td>
         <td className={styles.movieDetails}>
           <button
             className="ui small teal button"

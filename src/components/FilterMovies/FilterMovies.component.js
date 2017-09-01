@@ -235,18 +235,18 @@ class FilterMovies extends Component {
                   className="positive ui tiny button"
                   onClick={() => this.handleSearchClick(false)}
                 >
-                  <div className={styles.buttonTitle}>
+                  <span className={styles.buttonTitle}>
                   Search
-                  </div>
+                  </span>
                 </button>
               <button
                 className="info ui tiny button"
                 onClick={() => this.handleSearchClick(true)}
                 title="Just pick one movie for me based on filters"
               >
-                <div className={styles.buttonTitle}>
+                <span className={styles.buttonTitle}>
                   Random Search
-                </div>
+                </span>
               </button>
             </div>
           </div>
