@@ -62,11 +62,15 @@
   .Header {
     font-size: 1em; }
 
+  .navWrapper {
+    justify-content: center; }
+
   .appHeading {
     padding: 0.4em; }
 
   .navList {
-    width: 47vw; }
+    width: 47vw;
+    padding-left: 0; }
 
   .navListItem {
     margin: 0.2em 0; } }
