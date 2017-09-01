@@ -117,7 +117,9 @@ class SearchMovies extends Component {
         />
         {
           this.state.isComponentLoading ?
-            <span>Loading...</span>
+            <div className="ui active inverted dimmer">
+              <span className="ui text loader">Loading...</span>
+            </div>
             : !this.state.isDetailsMode ?
                 resultsComponent
                 : <MovieDetails
