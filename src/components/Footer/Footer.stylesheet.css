@@ -1,6 +1,6 @@
 .Footer {
   position: relative;
-  width: 20vw;
+  width: 40vw;
   margin-left: auto;
   margin-right: auto;
   bottom: 5px;
@@ -11,5 +11,12 @@
 .footerText {
   font-size: 1.2em;
   color: #4183C4; }
+
+@media only screen and (max-width: 570px) {
+  .Footer {
+    width: 100vw; }
+
+  .footerText {
+    font-size: 1em; } }
 
 /*# sourceMappingURL=Footer.stylesheet.css.map */
