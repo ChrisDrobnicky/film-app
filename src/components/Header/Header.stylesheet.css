@@ -1,7 +1,8 @@
 .Header {
   box-shadow: 0 -2px 9px 1px #9e9e9e;
   min-width: 100%;
-  font-size: 1.285714rem; }
+  font-size: 1.285714rem;
+  background-image: linear-gradient(to bottom right, #276562, #072f2e); }
 
 .navWrapper {
   display: flex;
@@ -24,10 +25,10 @@
 
 .navLink {
   text-decoration: none;
-  color: teal;
+  color: #8de0e0;
   transition: all .5s ease; }
   .navLink:hover {
-    color: #005b5b; }
+    color: #70afaf; }
 
 @media only screen and (max-width: 1200px) {
   .navList {

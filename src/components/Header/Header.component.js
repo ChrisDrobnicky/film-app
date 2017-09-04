@@ -9,8 +9,8 @@ const Header = () => (
       <h3 className={styles.appHeading}>
         <Link to="/" replace className={styles.navLink}>
           <span className={styles.navLinkName}>
+            <i className={`film ${window.innerWidth < 570 ? 'large' : 'big'} icon`}/>
             Movie Picker
-            <i className="film icon"/>
           </span>
         </Link>
       </h3>
