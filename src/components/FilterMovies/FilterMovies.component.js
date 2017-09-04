@@ -229,17 +229,17 @@ class FilterMovies extends Component {
               />
             </fieldset>
           </div>
-          <div className={styles.searchButtons}>
-            <div className={`ui tiny buttons`}>
+          <div className={styles.filterButtons}>
+            <div className={`ui ${window.innerWidth < 570 ? 'tiny' : 'medium'} buttons`}>
               <button
-                className="ui tiny teal button"
+                className={`${styles.searchButton} ui ${window.innerWidth < 570 ? 'tiny' : 'medium'} teal button`}
                 onClick={() => this.handleSearchClick(false)}
               >
                 Search
               </button>
               <div className="or"></div>
               <button
-                className="ui tiny grey button"
+                className={`${styles.randomSearchButton} ui ${window.innerWidth < 570 ? 'tiny' : 'medium'} grey button`}
                 onClick={() => this.handleSearchClick(true)}
                 title="Just pick one movie for me based on filters"
               >

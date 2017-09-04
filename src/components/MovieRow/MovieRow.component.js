@@ -134,7 +134,7 @@ class MovieRow extends Component {
         </td>
         <td className={styles.movieDetails}>
           <button
-            className="ui small teal button"
+            className={`${styles.detailsButton} ui ${window.innerWidth < 570 ? 'mini' : 'small'} teal button`}
             onClick={(event, movieID) => this.handleDetailsClick(true, this.props.id)}
           >Show details
           </button>
@@ -143,7 +143,7 @@ class MovieRow extends Component {
           this.props.isMyMovieTab &&
             <td className={styles.movieDelete}>
               <button
-                className="ui small red button"
+                className={`${styles.deleteButton} ui ${window.innerWidth < 570 ? 'mini' : 'small'} red button`}
                 onClick={() => this.props.handleDeleteClick(this.props.id)}
               >Delete
               </button>

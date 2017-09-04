@@ -64,18 +64,18 @@ class MovieDetails extends Component {
               <p className={styles.title}>{this.props.title}<span className={styles.year}> ({releaseYear})</span></p>
               <div className={styles.rating}>
                 <span className={styles.average}>
-                  <i className="yellow large star icon"/>
+                  <i className={`yellow ${window.innerWidth < 570 ? 'small' : 'large'} star icon`}/>
                   {this.props.voteAverage}
                 </span>
                 <span className={styles.count}>/10 ({this.props.voteCount} votes) </span>
               </div>
               <div className={styles.runtime}>
-                <i className="hourglass empty large icon"/>
+                <i className={`hourglass empty ${window.innerWidth < 570 ? 'small' : 'large'} icon`}/>
                 {runtimeHours}h {runtimeMinutes}min
               </div>
               <div className={styles.genres}>
                 <span className={styles.genresItem}>
-                  <i className="large hashtag icon"/>
+                  <i className={`${window.innerWidth < 570 ? 'small' : 'large'} hashtag icon`}/>
                   {genreToDisplay}
                 </span>
               </div>
@@ -102,10 +102,14 @@ class MovieDetails extends Component {
               </div>
             </div>
             <div className={styles.closeWrapper} onClick={() => this.handleBackClick(false)}>
-              <i className="window close big teal icon"/>
+              <i className={`window close ${window.innerWidth < 570 ? 'large' : 'big'} teal icon`}/>
             </div>
             <div className={styles.cancelButtonWrapper}>
-              <button className="ui cancel small teal button" onClick={() => this.handleBackClick(false)}>Back</button>
+              <button
+                className={`ui cancel ${window.innerWidth < 570 ? 'tiny' : 'medium'} teal button`}
+                onClick={() => this.handleBackClick(false)}
+              >Back
+              </button>
             </div>
           </div>
         </div>
