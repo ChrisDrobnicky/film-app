@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import styles from './Header.stylesheet.css';
 
 
@@ -7,22 +7,22 @@ const Header = () => (
   <header className={styles.Header}>
     <nav className={styles.navWrapper}>
       <h3 className={styles.appHeading}>
-        <Link to="/" replace className={styles.navLink}>
+        <NavLink to="/" replace className={styles.navLink} >
           <span className={styles.navLinkName}>
             <i className={`film ${window.innerWidth < 570 ? 'large' : 'big'} icon`}/>
             Movie Picker
           </span>
-        </Link>
+        </NavLink>
       </h3>
       <ul className={styles.navList}>
         <li className={styles.navListItem}>
-          <Link to="/" replace className={styles.navLink}>Search Movies</Link>
+          <NavLink exact to="/" replace className={styles.navLink} activeClassName={styles.active} >Search Movies</NavLink>
         </li>
         <li className={styles.navListItem}>
-          <Link to="/my-movies" replace className={styles.navLink}>My Movies</Link>
+          <NavLink to="/my-movies" replace className={styles.navLink} activeClassName={styles.active} >My Movies</NavLink>
         </li>
         <li className={styles.navListItem}>
-          <Link to="/about" replace className={styles.navLink}>About</Link>
+          <NavLink to="/about" replace className={styles.navLink} activeClassName={styles.active} >About</NavLink>
         </li>
       </ul>
     </nav>
