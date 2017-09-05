@@ -19,22 +19,6 @@
   font-size: 1.285714rem;
 }
 
-.navList {
-  display: flex;
-  padding-right: 0.8em;
-  justify-content: space-between;
-  list-style-type: none;
-  width: 30vw;
-}
-
-.navLinkName {
-
-}
-
-.navListItem {
-
-}
-
 .navLink {
   text-decoration: none;
   color: #8de0e0;
@@ -44,53 +28,33 @@
   }
 }
 
+.navList {
+  display: flex;
+  padding-right: 0.8em;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 30vw;
+}
+
+.navListItem {
+  margin: 0.5em 0.2em;
+}
+
 .active {
   color: white;
   border-bottom: 1px solid #8de0e0;
 }
 
 @media only screen and (max-width: 1200px) {
-  .Header {
-
-  }
-
-  .navWrapper {
-
-  }
-
-  .appHeading {
-
-  }
-
   .navList {
     width: 45vw;
-  }
-
-  .navLinkName {
-  }
-
-  .navListItem {
-
-  }
-
-  .navLink {
-
-
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .Header {
-
-  }
-
   .navWrapper {
     padding-left: 0.35em;
     padding-right: 0.35em;
-  }
-
-  .appHeading {
-
   }
 
   .navList {
@@ -99,18 +63,6 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-end;
-  }
-
-  .navLinkName {
-
-  }
-
-  .navListItem {
-    margin: 0.5em 0.2em;
-  }
-
-  .navLink {
-
   }
 }
 
@@ -124,24 +76,12 @@
     justify-content: space-around;
   }
 
-  .appHeading {
-
-  }
-
   .navList {
     width: 40vw;
   }
 
-  .navLinkName {
-
-  }
-
   .navListItem {
     margin: 0.3em 0;
-  }
-
-  .navLink {
-
   }
 }
 
@@ -163,15 +103,7 @@
     padding-left: 0;
   }
 
-  .navLinkName {
-
-  }
-
   .navListItem {
     margin: 0.2em 0;
-  }
-
-  .navLink {
-
   }
 }

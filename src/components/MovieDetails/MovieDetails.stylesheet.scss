@@ -84,10 +84,6 @@
   margin-bottom: 0.5em;
 }
 
-.overview {
-
-}
-
 .castWrapper {
   order: 2;
 }
@@ -99,10 +95,6 @@
 
 .castList {
   list-style-type: none;
-}
-
-.castItem {
-
 }
 
 .cancelButtonWrapper {
@@ -133,24 +125,12 @@
 
 
 @media only screen and (max-width: 570px) {
-  .Wrapper {
-
-  }
-
-  .modalHeader {
-
-  }
-
   .title {
     font-size: 0.8571em;
   }
 
   .year {
     font-size: 0.7857em;
-  }
-
-  .rating {
-
   }
 
   .average {
@@ -169,18 +149,6 @@
     font-size: 0.6em;
   }
 
-  .genresItem {
-
-  }
-
-  .modalContentWrapper {
-
-  }
-
-  .modalContent {
-
-  }
-
   .imageWrapper {
     flex-grow: 2;
     margin: 0.25em 0.25em 0.6em 0.25em;
@@ -190,16 +158,8 @@
     font-size: 0.7143em;
   }
 
-
-  .overviewWrapper {
-  }
-
   .overviewHeader {
     margin-bottom: 0.25em;
-  }
-
-  .overview {
-
   }
 
   .castWrapper {
@@ -214,17 +174,4 @@
     margin-top: 0;
     padding: 0;
   }
-
-  .castItem {
-
-  }
-
-  .cancelButtonWrapper {
-
-  }
-
-  .closeWrapper {
-
-  }
-
 }

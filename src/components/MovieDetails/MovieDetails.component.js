@@ -93,7 +93,7 @@ class MovieDetails extends Component {
               <div className={styles.descriptionWrapper}>
                 <div className={`scrolling content ${styles.overviewWrapper}`}>
                   <h4 className={styles.overviewHeader}>Overview:</h4>
-                  <p className={styles.overview}>{this.props.overview}</p>
+                  <p>{this.props.overview}</p>
                 </div>
                 <div className={`scrolling content ${styles.castWrapper}`}>
                   <h4 className={styles.castHeader}>Cast:</h4>

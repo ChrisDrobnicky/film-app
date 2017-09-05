@@ -16,6 +16,13 @@
   margin-bottom: 0;
   font-size: 1.285714rem; }
 
+.navLink {
+  text-decoration: none;
+  color: #8de0e0;
+  transition: all .5s ease; }
+  .navLink:hover {
+    color: #70afaf; }
+
 .navList {
   display: flex;
   padding-right: 0.8em;
@@ -23,12 +30,8 @@
   list-style-type: none;
   width: 30vw; }
 
-.navLink {
-  text-decoration: none;
-  color: #8de0e0;
-  transition: all .5s ease; }
-  .navLink:hover {
-    color: #70afaf; }
+.navListItem {
+  margin: 0.5em 0.2em; }
 
 .active {
   color: white;
@@ -47,10 +50,7 @@
     margin: 0.5em 0;
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: flex-end; }
-
-  .navListItem {
-    margin: 0.5em 0.2em; } }
+    align-items: flex-end; } }
 @media only screen and (max-width: 570px) {
   .Header {
     font-size: 1.14285rem; }

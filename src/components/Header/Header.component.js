@@ -8,7 +8,7 @@ const Header = () => (
     <nav className={styles.navWrapper}>
       <h3 className={styles.appHeading}>
         <NavLink to="/" replace className={styles.navLink} >
-          <span className={styles.navLinkName}>
+          <span>
             <i className={`film ${window.innerWidth < 570 ? 'large' : 'big'} icon`}/>
             Movie Picker
           </span>

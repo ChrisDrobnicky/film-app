@@ -100,7 +100,7 @@ class MovieRow extends Component {
             <img src={`${imageBaseURL}${imageSmall}${this.props.posterPath}`} alt="Movie Poster"/>
           </span>
         </td>
-        <td className={styles.movieGenre}>
+        <td>
           <span className={styles.iconWrapper}>
             <i className="hashtag large icon"></i>
           </span>
@@ -108,31 +108,31 @@ class MovieRow extends Component {
             {genreToDisplay}
           </span>
         </td>
-        <td className={styles.movieRating}>
+        <td>
           <span className={styles.iconWrapper}>
             <i className="yellow star large icon"></i>
           </span>
           {this.props.voteAverage}
         </td>
-        <td className={styles.movieVotes}>
+        <td>
           <span className={styles.iconWrapper}>
             <i className="users large icon"></i>
           </span>
           {this.props.voteCount}
         </td>
-        <td className={styles.movieYear}>
+        <td>
           <span className={styles.iconWrapper}>
             <i className="calendar outline large icon"></i>
           </span>
           {releaseYear}
         </td>
-        <td className={styles.movieRuntime}>
+        <td>
           <span className={styles.iconWrapper}>
             <i className="hourglass empty large icon"></i>
           </span>
           { this.state.runtime }
         </td>
-        <td className={styles.movieDetails}>
+        <td>
           <button
             className={`${styles.detailsButton} ui ${window.innerWidth < 570 ? 'mini' : 'small'} teal button`}
             onClick={(event, movieID) => this.handleDetailsClick(true, this.props.id)}
@@ -141,7 +141,7 @@ class MovieRow extends Component {
         </td>
         {
           this.props.isMyMovieTab &&
-            <td className={styles.movieDelete}>
+            <td>
               <button
                 className={`${styles.deleteButton} ui ${window.innerWidth < 570 ? 'mini' : 'small'} red button`}
                 onClick={() => this.props.handleDeleteClick(this.props.id)}

@@ -138,7 +138,6 @@ class FilterMovies extends Component {
               </legend>
               <label htmlFor="releaseYearFrom">From:</label>
               <select
-                className={styles.filterSelect}
                 id="releaseYearFrom"
                 name="releaseYearFrom"
                 value={this.state.releaseYearFrom.value}
@@ -148,7 +147,6 @@ class FilterMovies extends Component {
               </select>
               <label htmlFor="releaseYearTo">To:</label>
               <select
-                className={styles.filterSelect}
                 id="releaseYearTo"
                 name="releaseYearTo"
                 value={this.state.releaseYearTo.value}
@@ -166,7 +164,6 @@ class FilterMovies extends Component {
               </legend>
               <label htmlFor="ratingMin">Min:</label>
               <select
-                className={styles.filterSelect}
                 id="ratingMin"
                 name="ratingMin"
                 value={this.state.ratingMin.value}
@@ -176,7 +173,6 @@ class FilterMovies extends Component {
               </select>
               <label htmlFor="ratingMax">Max:</label>
               <select
-                className={styles.filterSelect}
                 id="ratingMax"
                 name="ratingMax"
                 value={this.state.ratingMax.value}
@@ -192,7 +188,6 @@ class FilterMovies extends Component {
               </legend>
               <label htmlFor="votesMin">Range</label>
               <select
-                className={styles.filterSelect}
                 id="votes"
                 name="votes"
                 value={this.state.votes.value === 'Any' ? 'Any' : `${this.state.votes.value[0]}-${this.state.votes.value[1]}`}
