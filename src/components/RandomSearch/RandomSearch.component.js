@@ -116,9 +116,10 @@ class RandomSearch extends Component {
               </span>
             </div>
           </div>
-          <div className="extra content">
+          <div className={`extra content ${styles.genres}`}>
             <span>
-              <span className="movieGenre">Genres:</span> {genreToDisplay}
+              <i className="hashtag large icon"/>
+              {genreToDisplay}
             </span>
           </div>
         </div>

@@ -1,13 +1,21 @@
+.iconWrapper {
+  display: none;
+}
+
 .tableRow {
   font-size: 1.2em;
+  vertical-align:middle;
   text-align: center;
 }
+
 .addWrapper {
   background-color: #dedede;
 }
+
 .titleWrapper {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .movieTitle {
@@ -18,39 +26,18 @@
 
 .movieImage {
   order: 2;
-  text-align: center;
 }
 
-.movieGenre {
-
+.detailsButton {
+  width: 9em;
 }
 
-.movieCast {
-
+.deleteButton {
+  width: 9em;
 }
 
-.movieCastList {
-  list-style-type: none;
-  text-align: left;
-  padding-left: 1em;
-}
-
-.movieCastItem {
-  padding-bottom: 5px;
-}
-
-.movieRating {
-
-}
-
-.movieVotes {
-
-}
-
-.movieDate {
-
-}
-
-.movieDetails {
-
+@media only screen and (max-width: 1000px) {
+  .iconWrapper {
+    display: inline;
+  }
 }

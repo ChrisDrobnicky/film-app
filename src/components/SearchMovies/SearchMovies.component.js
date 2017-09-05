@@ -65,7 +65,7 @@ class SearchMovies extends Component {
   render() {
     const movieToDetail  = this.state.detailedMovie;
     let resultsComponent = !this.state.isRandomMode ? (
-      <table className={`ui compact celled table`}>
+      <table className={`ui compact celled tablet stackable table`}>
         <thead className={styles.tableHead}>
         <tr>
           <th>Add</th>
@@ -117,7 +117,9 @@ class SearchMovies extends Component {
         />
         {
           this.state.isComponentLoading ?
-            <span>Loading...</span>
+            <div className="ui active inverted dimmer">
+              <span className="ui text loader">Loading...</span>
+            </div>
             : !this.state.isDetailsMode ?
                 resultsComponent
                 : <MovieDetails

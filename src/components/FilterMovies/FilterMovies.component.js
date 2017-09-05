@@ -113,116 +113,135 @@ class FilterMovies extends Component {
 
   render() {
     return(
-      <div className={styles.Wrapper}>
-        <fieldset>
-          <legend className={styles.filterHeader}>Set filters:</legend>
-          <fieldset>
-            <legend>Release Year</legend>
-            <label htmlFor="releaseYearFrom">From:</label>
-            <select
-              className=""
-              id="releaseYearFrom"
-              name="releaseYearFrom"
-              value={this.state.releaseYearFrom.value}
-              onChange={this.handleChange}
-            >
-              {this.generateNumericalOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
-            </select>
-            <label htmlFor="releaseYearTo">To:</label>
-            <select
-              className=""
-              id="releaseYearTo"
-              name="releaseYearTo"
-              value={this.state.releaseYearTo.value}
-              onChange={this.handleChange}
-            >
-              {this.generateNumericalOptions(this.state.releaseYearFrom.value || 1950, new Date().getFullYear())}
-            </select>
-          </fieldset>
-          <fieldset>
-            <legend>Votes</legend>
-            <label htmlFor="votesMin">Range:</label>
-            <select
-              className=""
-              id="votes"
-              name="votes"
-              value={this.state.votes.value === 'Any' ? 'Any' : `${this.state.votes.value[0]}-${this.state.votes.value[1]}`}
-              onChange={event => this.handleChange(event, true)}
-            >
-              {votesOptions}
-            </select>
-          </fieldset>
-          <fieldset>
-            <legend>Rating:</legend>
-            <label htmlFor="ratingMin">Min:</label>
-            <select
-              className=""
-              id="ratingMin"
-              name="ratingMin"
-              value={this.state.ratingMin.value}
-              onChange={this.handleChange}
-            >
-              {this.generateNumericalOptions(0, this.state.ratingMax.value || 10)}
-            </select>
-            <label htmlFor="ratingMax">Max:</label>
-            <select
-              className=""
-              id="ratingMax"
-              name="ratingMax"
-              value={this.state.ratingMax.value}
-              onChange={this.handleChange}
-            >
-              {this.generateNumericalOptions(this.state.ratingMin.value || 0, 10)}
-            </select>
-          </fieldset>
-          <fieldset>
-            <legend>Genres:</legend>
-            <Select
-              name="form-field-name"
-              value={this.state.genres.value}
-              options={this.state.genresOptions}
-              isLoading={this.state.genresOptions.length === 0}
-              multi={true}
-              onChange={this.handleGenreSelect}
-            />
-          </fieldset>
-          <fieldset>
-            <legend>Runtime (minutes):</legend>
-            <label htmlFor="runtimeMin">Min:</label>
-            <input
-              id="runtimeMin"
-              name="runtimeMin"
-              type="number"
-              min="0"
-              max={this.state.runtimeMax.value}
-              step="15"
-              value={this.state.runtimeMin.value}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="runtimeMax">Max:</label>
-            <input
-              id="runtimeMax"
-              name="runtimeMax"
-              type="number"
-              min={this.state.runtimeMin.value}
-              step="15"
-              value={this.state.runtimeMax.value}
-              onChange={this.handleChange}
-            />
-          </fieldset>
-          <button
-            className="positive ui tiny button"
-            onClick={() => this.handleSearchClick(false)}
-          >
-            Search
-          </button>
-          <button
-            className="info ui tiny button"
-            onClick={() => this.handleSearchClick(true)}
-            title="Just pick one movie for me based on filters"
-          >
-            Random Search
-          </button>
+      <div className={`ui compact form ${styles.Wrapper}`}>
+        <fieldset className="field">
+          <legend className="ui brown ribbon big label">Set filters:</legend>
+          <div className="two fields">
+            <fieldset className="field">
+              <legend className="ui brown horizontal label">
+                <i className="hashtag large icon"></i>
+                Genres
+              </legend>
+              <Select
+                name="form-field-name"
+                value={this.state.genres.value}
+                options={this.state.genresOptions}
+                isLoading={this.state.genresOptions.length === 0}
+                multi={true}
+                onChange={this.handleGenreSelect}
+              />
+            </fieldset>
+            <fieldset className="field">
+              <legend className="ui brown horizontal label">
+                <i className="calendar outline large icon"></i>
+                Release Year
+              </legend>
+              <label htmlFor="releaseYearFrom">From:</label>
+              <select
+                id="releaseYearFrom"
+                name="releaseYearFrom"
+                value={this.state.releaseYearFrom.value}
+                onChange={this.handleChange}
+              >
+                {this.generateNumericalOptions(1930, this.state.releaseYearTo.value || new Date().getFullYear())}
+              </select>
+              <label htmlFor="releaseYearTo">To:</label>
+              <select
+                id="releaseYearTo"
+                name="releaseYearTo"
+                value={this.state.releaseYearTo.value}
+                onChange={this.handleChange}
+              >
+                {this.generateNumericalOptions(this.state.releaseYearFrom.value || 1930, new Date().getFullYear())}
+              </select>
+            </fieldset>
+          </div>
+          <div className="three fields">
+            <fieldset className="field">
+              <legend className="ui brown horizontal label">
+                <i className="empty star large icon"></i>
+                Rating
+              </legend>
+              <label htmlFor="ratingMin">Min:</label>
+              <select
+                id="ratingMin"
+                name="ratingMin"
+                value={this.state.ratingMin.value}
+                onChange={this.handleChange}
+              >
+                {this.generateNumericalOptions(0, this.state.ratingMax.value || 10)}
+              </select>
+              <label htmlFor="ratingMax">Max:</label>
+              <select
+                id="ratingMax"
+                name="ratingMax"
+                value={this.state.ratingMax.value}
+                onChange={this.handleChange}
+              >
+                {this.generateNumericalOptions(this.state.ratingMin.value || 0, 10)}
+              </select>
+            </fieldset>
+            <fieldset className="field">
+              <legend className="ui brown horizontal label">
+                <i className="users large icon"></i>
+                Votes
+              </legend>
+              <label htmlFor="votesMin">Range</label>
+              <select
+                id="votes"
+                name="votes"
+                value={this.state.votes.value === 'Any' ? 'Any' : `${this.state.votes.value[0]}-${this.state.votes.value[1]}`}
+                onChange={event => this.handleChange(event, true)}
+              >
+                {votesOptions}
+              </select>
+            </fieldset>
+            <fieldset className="field">
+              <legend className="ui brown horizontal label">
+                <i className="hourglass empty large icon"></i>
+                Runtime (minutes)
+              </legend>
+              <label htmlFor="runtimeMin">Min:</label>
+              <input
+                id="runtimeMin"
+                name="runtimeMin"
+                type="number"
+                min="0"
+                max={this.state.runtimeMax.value}
+                step="15"
+                value={this.state.runtimeMin.value}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="runtimeMax">Max:</label>
+              <input
+                id="runtimeMax"
+                name="runtimeMax"
+                type="number"
+                min={this.state.runtimeMin.value}
+                step="15"
+                value={this.state.runtimeMax.value}
+                onChange={this.handleChange}
+              />
+            </fieldset>
+          </div>
+          <div className={styles.filterButtons}>
+            <div className={`ui ${window.innerWidth < 570 ? 'tiny' : 'medium'} buttons`}>
+              <button
+                className={`${styles.searchButton} ui ${window.innerWidth < 570 ? 'tiny' : 'medium'} teal button`}
+                onClick={() => this.handleSearchClick(false)}
+              >
+                Search
+              </button>
+              <div className="or"></div>
+              <button
+                className={`${styles.randomSearchButton} ui ${window.innerWidth < 570 ? 'tiny' : 'medium'} grey button`}
+                onClick={() => this.handleSearchClick(true)}
+                title="Just pick one movie for me based on filters"
+              >
+                Random Search
+              </button>
+            </div>
+          </div>
         </fieldset>
       </div>
     )
