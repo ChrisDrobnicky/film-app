@@ -1,9 +1,10 @@
 .Footer {
-  position: relative;
-  width: 40vw;
+  position: absolute;
+  width: 20vw;
   margin-left: auto;
   margin-right: auto;
-  bottom: 5px;
+  padding: 0.5rem;
+  bottom: 0;
   right: 0;
   left: 0;
   text-align: center; }
