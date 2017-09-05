@@ -1,0 +1,138 @@
+.Wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(1, 1, 1, 0.48); }
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column; }
+
+.title {
+  order: 1;
+  font-size: 1.1em; }
+
+.year {
+  font-size: 1em;
+  color: #9e9e9e; }
+
+.rating {
+  order: 2; }
+
+.average {
+  font-size: 0.8em; }
+
+.count {
+  font-size: 0.65em;
+  color: #9e9e9e; }
+
+.runtime {
+  order: 3;
+  font-size: 0.8em; }
+
+.genres {
+  order: 4;
+  font-size: 0.8em; }
+
+.genresItem {
+  font-weight: 300; }
+
+.modalContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
+.modalContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
+.imageWrapper {
+  order: 1;
+  margin: 0.5em 0.5em 1.2em 0.5em; }
+
+.descriptionWrapper {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.overviewWrapper {
+  order: 1;
+  margin-bottom: 0.25em; }
+
+.overviewHeader {
+  font-size: 1.2em;
+  margin-bottom: 0.5em; }
+
+.castWrapper {
+  order: 2; }
+
+.castHeader {
+  font-size: 1.2em;
+  margin-bottom: 0.5em; }
+
+.castList {
+  list-style-type: none; }
+
+.cancelButtonWrapper {
+  text-align: center; }
+
+.closeWrapper {
+  position: absolute;
+  top: 1em;
+  right: 0.85em;
+  cursor: pointer; }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+.zoomIn {
+  animation: zoomIn 1s; }
+
+@media only screen and (max-width: 570px) {
+  .title {
+    font-size: 0.8571em; }
+
+  .year {
+    font-size: 0.7857em; }
+
+  .average {
+    font-size: 0.6em; }
+
+  .count {
+    font-size: 0.5em; }
+
+  .runtime {
+    font-size: 0.6em; }
+
+  .genres {
+    font-size: 0.6em; }
+
+  .imageWrapper {
+    flex-grow: 2;
+    margin: 0.25em 0.25em 0.6em 0.25em; }
+
+  .descriptionWrapper {
+    font-size: 0.7143em; }
+
+  .overviewHeader {
+    margin-bottom: 0.25em; }
+
+  .castWrapper {
+    order: 2; }
+
+  .castHeader {
+    margin-bottom: 0.25em; }
+
+  .castList {
+    margin-top: 0;
+    padding: 0; } }
+
+/*# sourceMappingURL=MovieDetails.stylesheet.css.map */

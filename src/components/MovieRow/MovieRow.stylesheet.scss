@@ -1,0 +1,43 @@
+.iconWrapper {
+  display: none;
+}
+
+.tableRow {
+  font-size: 1.2em;
+  vertical-align:middle;
+  text-align: center;
+}
+
+.addWrapper {
+  background-color: #dedede;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.movieTitle {
+  order: 1;
+  font-weight: 800;
+  margin-bottom: 1em;
+}
+
+.movieImage {
+  order: 2;
+}
+
+.detailsButton {
+  width: 9em;
+}
+
+.deleteButton {
+  width: 9em;
+}
+
+@media only screen and (max-width: 1000px) {
+  .iconWrapper {
+    display: inline;
+  }
+}

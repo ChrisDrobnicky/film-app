@@ -1,0 +1,14 @@
+.Wrapper {
+  margin: 2em auto;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 400;
+  width: 30vw;
+}
+
+@media only screen and (max-height: 768px) {
+  .Wrapper {
+    font-size: 1em;
+    width: 80vw;
+  }
+}

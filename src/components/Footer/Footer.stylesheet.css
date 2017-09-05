@@ -1,0 +1,23 @@
+.Footer {
+  position: absolute;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center; }
+
+.footerText {
+  font-size: 1.2em;
+  color: #4183C4; }
+
+@media only screen and (max-width: 570px) {
+  .Footer {
+    width: 100vw; }
+
+  .footerText {
+    font-size: 1em; } }
+
+/*# sourceMappingURL=Footer.stylesheet.css.map */
