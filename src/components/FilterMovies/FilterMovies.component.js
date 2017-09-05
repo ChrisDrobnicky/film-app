@@ -143,7 +143,7 @@ class FilterMovies extends Component {
                 value={this.state.releaseYearFrom.value}
                 onChange={this.handleChange}
               >
-                {this.generateNumericalOptions(1950, this.state.releaseYearTo.value || new Date().getFullYear())}
+                {this.generateNumericalOptions(1930, this.state.releaseYearTo.value || new Date().getFullYear())}
               </select>
               <label htmlFor="releaseYearTo">To:</label>
               <select
@@ -152,7 +152,7 @@ class FilterMovies extends Component {
                 value={this.state.releaseYearTo.value}
                 onChange={this.handleChange}
               >
-                {this.generateNumericalOptions(this.state.releaseYearFrom.value || 1950, new Date().getFullYear())}
+                {this.generateNumericalOptions(this.state.releaseYearFrom.value || 1930, new Date().getFullYear())}
               </select>
             </fieldset>
           </div>
